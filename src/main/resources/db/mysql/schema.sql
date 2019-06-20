@@ -6,20 +6,62 @@ ALTER DATABASE promanDB
 
 USE promanDB;
 
-CREATE TABLE IF NOT EXISTS users (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  email VARCHAR(100),
-  username VARCHAR(50),
-  password VARCHAR(100),
-  role VARCHAR(10)
-); 
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot1', '123123', 'bot1@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot2', '123123', 'bot2@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot3', '123123', 'bot3@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot4', '123123', 'bot4@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot5', '123123', 'bot5@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot6', '123123', 'bot6@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot7', '123123', 'bot7@gmail.com', 'admin');
+create table APP_USER
+(
+  USER_ID BIGINT not null,
+  USER_NAME VARCHAR(36) not null,
+  encrypted_password VARCHAR(128) not null,
+  enabled TINYINT not null 
+) ;
 
+alter table APP_USER
+  add constraint APP_USER_PK primary key (USER_ID);
+ 
+alter table APP_USER
+  add constraint APP_USER_UK unique (USER_NAME);
+ 
+ 
+create table APP_ROLE
+(
+  ROLE_ID BIGINT not null,
+  ROLE_NAME VARCHAR(30) not null
+) ;
+
+alter table APP_ROLE
+  add constraint APP_ROLE_PK primary key (ROLE_ID);
+ 
+alter table APP_ROLE
+  add constraint APP_ROLE_UK unique (ROLE_NAME);
+ 
+ 
+
+create table USER_ROLE
+(
+  ID BIGINT not null,
+  USER_ID BIGINT not null,
+  ROLE_ID BIGINT not null
+);
+
+alter table USER_ROLE
+  add constraint USER_ROLE_PK primary key (ID);
+ 
+alter table USER_ROLE
+  add constraint USER_ROLE_UK unique (USER_ID, ROLE_ID);
+ 
+alter table USER_ROLE
+  add constraint USER_ROLE_FK1 foreign key (USER_ID)
+  references APP_USER (USER_ID);
+ 
+alter table USER_ROLE
+  add constraint USER_ROLE_FK2 foreign key (ROLE_ID)
+  references APP_ROLE (ROLE_ID);
+  
+CREATE TABLE Persistent_Logins (
+ 
+    username varchar(64) not null,
+    series varchar(64) not null,
+    token varchar(64) not null,
+    last_used timestamp not null,
+    PRIMARY KEY (series)
+     
+);
