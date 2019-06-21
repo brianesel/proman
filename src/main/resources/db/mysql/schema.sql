@@ -24,7 +24,7 @@ CREATE TABLE `user` (
 
 
 CREATE TABLE `users_roles` (
-  `user_id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `user_id` bigint(20) NOT NULL,
   `role_id` bigint(20) NOT NULL,
   KEY `FKt4v0rrweyk393bdgt107vdx0x` (`role_id`),
   KEY `FKgd3iendaoyh04b95ykqise6qh` (`user_id`),
