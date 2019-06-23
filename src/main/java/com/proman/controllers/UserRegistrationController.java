@@ -35,6 +35,8 @@ public class UserRegistrationController {
     @PostMapping
     public String registerUserAccount(@ModelAttribute("user") @Valid UserRegistrationDto userDto,
             BindingResult result) {
+        System.out.println("this is the Results:" + result.toString());
+        System.out.println("this is the userDTO:" + userDto.toString());
 
         User existing = userService.findByEmail(userDto.getEmail());
         if (existing != null) {
