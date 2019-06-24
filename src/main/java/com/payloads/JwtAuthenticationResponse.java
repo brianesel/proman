@@ -1,8 +1,8 @@
-package payloads;
+package com.payloads;
 
 public class JwtAuthenticationResponse {
 
-	private String accessToken;
+    private String accessToken;
     private String tokenType = "Bearer";
 
     public JwtAuthenticationResponse(String accessToken) {

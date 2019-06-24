@@ -1,4 +1,4 @@
-package payloads;
+package com.payloads;
 
 public class ApiResponse {
 

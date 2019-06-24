@@ -1,4 +1,4 @@
-package payloads;
+package com.payloads;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
