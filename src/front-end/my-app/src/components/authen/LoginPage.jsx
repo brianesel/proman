@@ -54,13 +54,6 @@ class SignupPage extends Component {
             <div>
                 <h1>Sign in</h1>
                 <div className="container">
-                    {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                    {/*<ShowLoginSuccessMessage showSuccessMessage=s.st{thiate.showSuccessMessage}/>*/}
-                    Login ID (username or email): <input type="text" name="userId" value={this.state.userId} onChange={this.handleChange} />
-                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <button className="btn btn-success" onClick={this.signinClicked}>Sign in</button>
                 </div>
                 <Link to="/info/user">User</Link>
                 <Route path="/info/user" component={UserInfo} />
