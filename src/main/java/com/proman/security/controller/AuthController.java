@@ -31,6 +31,7 @@ import com.payloads.ApiResponse;
 import com.payloads.JwtAuthenticationResponse;
 import com.payloads.LoginRequest;
 import com.payloads.SignUpRequest;
+import com.payloads.CheckisAuthenticated;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -61,6 +62,13 @@ public class AuthController {
 
 		String jwt = tokenProvider.generateToken(authentication);
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
+	}
+
+	@PostMapping("/checkUserStatus")
+	public boolean userStatus(@Valid @RequestBody CheckisAuthenticated userInfo) {
+
+		boolean isAuthenticated = tokenProvider.validateToken(userInfo.getAccessToken());
+		return isAuthenticated;
 	}
 
 	@PostMapping("/signup")
