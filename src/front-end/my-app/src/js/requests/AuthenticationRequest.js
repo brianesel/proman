@@ -3,6 +3,9 @@ import axios from 'axios'
 const API_URL= 'http://localhost:1609'
 
 class AuthenticationRequest {
+    constructor() {
+        this.isAuthenticated = false;
+    }
 
     registerNewUser(userInfo) {
         return axios.post(`${API_URL}/api/auth/signup`, {
@@ -17,6 +20,12 @@ class AuthenticationRequest {
         return axios.post(`${API_URL}/api/auth/signin`,{
             usernameOrEmail : userInfo.userId,
             password : userInfo.password
+        })
+    }
+
+    checkUserLoggedin(userInfo) {
+        return axios.post(`${API_URL}/api/auth/checkUserStatus`, {
+           accessToken: userInfo
         })
     }
 
