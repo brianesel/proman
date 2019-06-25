@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
-import UserInfo from '../welcome/UserInfo'
+import UserInfo from '../user/UserInfo'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class SignupPage extends Component {
