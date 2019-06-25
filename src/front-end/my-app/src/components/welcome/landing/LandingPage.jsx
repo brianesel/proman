@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { BrowserRouter as Route, Link } from "react-router-dom";
-import LandingPage from './landing/LandingPage'
+import SigninPage from '../../authen/LoginPage'
+import SignupPage from '../../authen/SignupPage'
 
-class WelcomePage extends Component {
+class LandingPage extends Component {
 
     constructor(props) {
         super(props)
@@ -15,12 +16,15 @@ class WelcomePage extends Component {
         return (
             <div>
                 <div>
-                    <Link to="/landing">Welcome</Link>
+                    <Link to="/signin">Welcome</Link>
+                    <Link to="/signin">Welcome</Link>
+                    <Link to="/user/profile">My page</Link>
                 </div>
+                <Route path="/landing" exact component={LandingPage} />
                 <Route path="/landing" exact component={LandingPage} />
             </div>
         )
     }
 }
 
-export default WelcomePage
+export default LandingPage

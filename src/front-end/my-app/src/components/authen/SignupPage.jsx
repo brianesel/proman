@@ -43,10 +43,6 @@ class SignupPage extends Component {
             <div>
                 <h1>Sign up</h1>
                 <div className="container">
-                    {/*<ShowInvalidCredentials hasLoginFailed={this.state.hasLoginFailed}/>*/}
-                    {this.state.hasLoginFailed && <div className="alert alert-warning">Invalid Credentials</div>}
-                    {this.state.showSuccessMessage && <div>Login Sucessful</div>}
-                    {/*<ShowLoginSuccessMessage showSuccessMessage=s.st{thiate.showSuccessMessage}/>*/}
                     Name: <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
                     Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
                     Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />

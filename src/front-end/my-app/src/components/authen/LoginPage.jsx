@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
-import UserInfo from '../welcome/UserInfo'
+import UserInfo from '../user/UserInfo'
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 
 class SignupPage extends Component {
@@ -37,7 +37,16 @@ class SignupPage extends Component {
             .then((response) => {
                 cooky.setItem('accessTokenEncrypted',CryptoJS.AES.encrypt(response.data.accessToken,'somerandomsecretkey'));
                 cooky.setItem('userOathTokenType', response.data.tokenType);
+                AuthenticationRequest
+                    .checkUserLoggedin(response.data.tokenType + " " + response.data.accessToken)
+                    .then((response) => {
+                        if (response.data== true || response.data == "true"){
+                            AuthenticationRequest.isAuthenticated = true;
+                        }
+                        else { console.log(response.data)}
+                    })
             })
+            .catch()
     }
 
     render() {
