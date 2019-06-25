@@ -1,5 +1,6 @@
 package com.proman.security.security;
 
+import com.proman.security.exception.TokenInvalidResponse;
 import java.util.Date;
 
 import org.slf4j.Logger;
@@ -20,6 +21,8 @@ import io.jsonwebtoken.UnsupportedJwtException;
 public class JwtTokenProvider {
 
     private static final Logger logger = LoggerFactory.getLogger(JwtTokenProvider.class);
+
+    private TokenInvalidResponse tokeninvalidresponse;
 
     @Value("${app.jwtSecret}")
     private String jwtSecret;
