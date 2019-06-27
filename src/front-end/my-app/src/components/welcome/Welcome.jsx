@@ -1,26 +1,23 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route, Link } from "react-router-dom";
+import { Router, Switch, Redirect, Route, Link } from "react-router-dom";
 import LandingPage from './landing/LandingPage'
+import history from '../../js/history'
 
-class WelcomePage extends Component {
+class Welcome extends Component {
 
     constructor(props) {
         super(props)
-
+        
+        console.log("ưelcome")
         this.state = {
         }
     }
 
     render() {
         return (
-            <div>
-                <div>
-                    <Link to="/landing">Welcome</Link>
-                </div>
-                <Route path="/landing" exact component={LandingPage} />
-            </div>
+            <div>HIWAKJALWK</div>
         )
     }
 }
 
-export default WelcomePage
+export default Welcome

@@ -1,6 +1,4 @@
-/**
- * 
- */
+
 package com.proman.security.model;
 
 import java.util.HashSet;
@@ -20,11 +18,6 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
-
-/**
- * @author Vaibhav.Singh
- *
- */
 
 @Entity
 @Table(name = "users")
