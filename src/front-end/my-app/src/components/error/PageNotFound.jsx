@@ -12,7 +12,7 @@ class PageNotFound extends Component {
 
     render() {
         return (
-            <div>ERORRR</div>
+            <div>ERORRR. Page not found</div>
         )
     }
 }

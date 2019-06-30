@@ -4,7 +4,7 @@ export default class UserDashboard extends Component {
 
     constructor(props) {
         super(props)
-        console.log("landing")
+        
         this.state = {
         }
     }
