@@ -5,7 +5,6 @@ import SignupPage from '../../authen/SignupPage'
 import UserProfile from '../../user/UserInfo'
 import logo from '../../../logo.png'
 import '../../../css/layouts/landingNav.scss'
-import {PrivateRoute} from '../../router/PrivateRoute'
 
 class LandingMenu extends Component {
 
@@ -21,22 +20,22 @@ class LandingMenu extends Component {
                 },
                 {
                     name: 'About me',
-                    path: '/about',
+                    path: '/landing/about',
                     component: {SignupPage}
                 },
                 {
                     name: 'Services',
-                    path: '/services',
+                    path: '/landing/services',
                     component: {SignupPage}
                 },
                 {
                     name: 'My account',
-                    path: '/account',
+                    path: '/user',
                     component: {UserProfile}
                 },
                 {
                     name: 'Contact',
-                    path: '/contact',
+                    path: '/landing/contact',
                     component: {SignupPage}
                 }
             ]
@@ -45,10 +44,10 @@ class LandingMenu extends Component {
 
     render() {
         this.menu_items = this.state.menu.map((item) =>{
-            return item.path === '/account' 
-            ? <PrivateRoute className="nav_link" to={item.path} component={item.component}>
+            return item.path === '/user' 
+            ? <Link className="nav_link" to={item.path} component={item.component}>
                 <li name={item.path}>{item.name}</li>
-            </PrivateRoute>
+            </Link>
             : <Link className="nav_link" to={item.path}>
                 <li name={item.path}>{item.name}</li> 
             </Link> 

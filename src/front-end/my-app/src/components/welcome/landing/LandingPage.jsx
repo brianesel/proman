@@ -29,6 +29,7 @@ export default class LandingPage extends Component {
                     <Route path="/landing/about" component={SignupPage}/>
                     <Route path="/landing/contact" component={SignupPage}/>
                     <Route path="/landing/services" component={SignupPage}/>
+                    <Route path="/user" component={SignupPage}/>
                 </Switch>
                 <Footer/>
             </div>

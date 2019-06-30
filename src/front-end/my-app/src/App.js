@@ -4,7 +4,10 @@ import './App.scss';
 import WelcomePage from './components/welcome/Welcome.jsx'
 import LandingPage from './components/welcome/landing/LandingPage'
 import SignUp from './components/authen/SignupPage'
-import NotFound from './components/user/UserInfo'
+import NotFound from './components/error/PageNotFound'
+import Login from './components/authen/LoginPage'
+import {ProtectedRoute} from './components/router/ProtectedRoute'
+import UserDashboard from './components/user/UserDashboard'
 
 class App extends Component {
   constructor(){
@@ -15,9 +18,11 @@ class App extends Component {
     return (
       <BrowserRouter>
         <Switch>
-          <Route exact path="/welcome" component={WelcomePage}/>
-          <Route path="/landing" component={LandingPage}/>
+          <Route exact path="/" component={WelcomePage}/>
+          <Route exact path="/landing" component={LandingPage}/>
           <Route path="/signup" component={SignUp}/>
+          <Route path="/signin" component={Login}/>
+          <ProtectedRoute path="/user" component={UserDashboard}/>
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
