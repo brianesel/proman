@@ -3,8 +3,9 @@ import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
 import UserInfo from '../user/UserInfo'
 import { Router, Route, Link } from "react-router-dom";
+import '../../css/authen/SigninPage.scss'
 
-class SignupPage extends Component {
+class SigninPage extends Component {
 
     constructor(props) {
         super(props)
@@ -55,14 +56,18 @@ class SignupPage extends Component {
 
     render() {
         return (
-            <div>
+            <div className="login_wrapper">
                 <div className="login_box">
                     <h1>Sign in</h1>
-                    <div className="login_info">
-                        <p>User ID</p>
-                        <input type="text" value={this.state.userId} onChange={this.handleUserChange} placeholder="Email or Username"/>
-                        <p>Password</p>
-                        <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password"/>
+                    <div className="login_info_container">
+                        <div className="login_info userid_container">
+                            <p>User ID</p>
+                            <input type="text" value={this.state.userId} onChange={this.handleUserChange} placeholder="Email or Username"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Password</p>
+                            <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password"/>
+                        </div>
                     </div>
                     <button onClick={this.signinClicked}>Submit</button>
                 </div>
@@ -71,4 +76,4 @@ class SignupPage extends Component {
     }
 }
 
-export default SignupPage
+export default SigninPage
