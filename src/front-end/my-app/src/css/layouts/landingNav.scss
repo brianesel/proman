@@ -1,0 +1,58 @@
+.nav-container {
+    position: relative;
+
+    .wrapper {
+        position: relative;
+        width: 90%;
+        margin: auto;
+
+        .branding {
+            position: relative;
+            display: inline-block;
+            margin-left: 5%;
+            width:25%;
+            .brand_logo {
+                width: 50px;
+                display: inline-block;
+                vertical-align: middle;
+            }
+
+            .brand_text {
+                margin-left: 5px;
+                display: inline;
+                vertical-align: middle;
+            }
+        }
+
+        .menu-container {
+            position: relative;
+            display: inline-block;
+            list-style-type: none;
+            margin-left: 10%;
+            width: 60%;
+            height: 100%;
+            .items {
+                
+                .nav_link {
+
+                    li {
+                        position: relative;
+                        display: inline-block;
+                        width: 20%;
+                        font-weight: 500;
+                        text-align: center;
+                        color: black;
+    
+                        &:hover {
+                            color: #201aa3;
+                            cursor: pointer;
+                            font-weight: 600;
+                            font-size: 18px;
+                            transition-duration: 0.2s;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

@@ -40,7 +40,7 @@ class SignupPage extends Component {
                 AuthenticationRequest
                     .checkUserLoggedin(response.data.tokenType + " " + response.data.accessToken)
                     .then((response) => {
-                        if (response.data== true || response.data == "true"){
+                        if (response.data === true || response.data === "true"){
                             AuthenticationRequest.isAuthenticated = true;
                         }
                         else { console.log(response.data)}
