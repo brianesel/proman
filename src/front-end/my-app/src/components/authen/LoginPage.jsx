@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
 import UserInfo from '../user/UserInfo'
-import { BrowserRouter as Router, Route, Link } from "react-router-dom";
+import { Router, Route, Link } from "react-router-dom";
 
 class SignupPage extends Component {
 
@@ -16,17 +16,21 @@ class SignupPage extends Component {
             showSuccessMessage: false
         }
 
-        this.handleChange = this.handleChange.bind(this)
+        this.handleUserChange = this.handleUserChange.bind(this)
+        this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.signinClicked = this.signinClicked.bind(this)
     }
 
-    handleChange(event) {
-        this.setState(
-            {
-                [event.target.name]
-                    : event.target.value
-            }
-        )
+    handleUserChange(event) {
+        this.setState({
+            userId: event.target.value,
+        });
+    }
+
+    handlePasswordChange(event) {
+        this.setState({
+            password: event.target.value,
+        });
     }
 
     signinClicked() {
@@ -52,11 +56,16 @@ class SignupPage extends Component {
     render() {
         return (
             <div>
-                <h1>Sign in</h1>
-                <div className="container">
+                <div className="login_box">
+                    <h1>Sign in</h1>
+                    <div className="login_info">
+                        <p>User ID</p>
+                        <input type="text" value={this.state.userId} onChange={this.handleUserChange} placeholder="Email or Username"/>
+                        <p>Password</p>
+                        <input type="password" value={this.state.password} onChange={this.handlePasswordChange} placeholder="Password"/>
+                    </div>
+                    <button onClick={this.signinClicked}>Submit</button>
                 </div>
-                <Link to="/info/user">User</Link>
-                <Route path="/info/user" component={UserInfo} />
             </div>
         )
     }
