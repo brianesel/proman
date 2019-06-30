@@ -1,6 +1,6 @@
-# proman
+# ProMan project: Build with Spring Boot Java and React.js
 
-usual update will be on develop branch
+Usual update will be on develop branch
 
 # Start back end Spring Boot application:
 On main directory of the project
