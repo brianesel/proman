@@ -9,7 +9,9 @@ class SignupPage extends Component {
         this.state = {
             username: '',
             password: '',
+            repeatedPassword:'',
             email:'',
+            repeatedEmail:'',
             name:'',
             hasLoginFailed: false,
             showSuccessMessage: false
@@ -22,32 +24,56 @@ class SignupPage extends Component {
     handleChange(event) {
         this.setState(
             {
-                [event.target.name]
-                    : event.target.value
+                [event.target.name]: event.target.value
             }
         )
     }
 
     signupClicked() {
         let user = this.state;
-        console.log(user);
-        AuthenticationRequest
-            .registerNewUser(user)
-            .then((response) => {
-                console.log(response);
-            })
+        if(this.state.email===this.state.repeatedEmail && this.state.password===this.state.repeatedPassword){
+            AuthenticationRequest
+                .registerNewUser(user)
+                .then((response) => {
+                    console.log(response);
+                })
+        }else {
+            console.log('not match')
+        }
     }
 
     render() {
         return (
-            <div>
-                <h1>Sign up</h1>
-                <div className="container">
-                    Name: <input type="text" name="name" value={this.state.name} onChange={this.handleChange} />
-                    Username: <input type="text" name="username" value={this.state.username} onChange={this.handleChange} />
-                    Email: <input type="text" name="email" value={this.state.email} onChange={this.handleChange} />
-                    Password: <input type="password" name="password" value={this.state.password} onChange={this.handleChange} />
-                    <button className="btn btn-success" onClick={this.signupClicked}>Sign up</button>
+            <div className="login_wrapper">
+                <div className="login_box">
+                    <h1>Sign up</h1>
+                    <div className="login_info_container">
+                        <div className="login_info password_container">
+                            <p>Name</p>
+                            <input name="name" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Email</p>
+                            <input name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Repeat email</p>
+                            <input name="repeatedEmail" type="text" value={this.state.repeatedEmail} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                        <div className="login_info userid_container">
+                            <p>Username</p>
+                            <input name="username" type="text" value={this.state.userId} onChange={this.handleChange} placeholder="Username"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Password</p>
+                            <input name="password" type="password" value={this.state.password} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Repreat password</p>
+                            <input name="repeatedPassword" type="password" value={this.state.repeatedPassword} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                    </div>
+                    <button onClick={this.signupClicked}>Submit</button>
                 </div>
             </div>
         )

@@ -3,7 +3,7 @@ import Navigator from '../../layouts/navigator/LandingNav'
 import Body from './LandingBody'
 import Footer from '../../layouts/footer/LandingFooter'
 import SignupPage from '../../authen/SignupPage'
-import { Route, Link, Router, Redirect, Switch } from "react-router-dom";
+import { Route, Link, Router, Switch } from "react-router-dom";
 
 const landingContainerStyle = {
     maxWidth: '1500px',
@@ -15,7 +15,6 @@ export default class LandingPage extends Component {
 
     constructor(props) {
         super(props)
-        console.log("landing")
         this.state = {
         }
     }
@@ -29,7 +28,6 @@ export default class LandingPage extends Component {
                     <Route path="/landing/about" component={SignupPage}/>
                     <Route path="/landing/contact" component={SignupPage}/>
                     <Route path="/landing/services" component={SignupPage}/>
-                    <Route path="/user" component={SignupPage}/>
                 </Switch>
                 <Footer/>
             </div>

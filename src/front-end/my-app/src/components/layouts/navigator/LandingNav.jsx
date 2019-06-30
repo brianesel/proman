@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Route, Router, Link, NavLink } from "react-router-dom";
-import SigninPage from '../../authen/LoginPage'
+import { Link, NavLink } from "react-router-dom";
 import SignupPage from '../../authen/SignupPage'
 import UserProfile from '../../user/UserInfo'
 import logo from '../../../logo.png'
@@ -43,12 +42,12 @@ class LandingMenu extends Component {
     }
 
     render() {
-        this.menu_items = this.state.menu.map((item) =>{
+        this.menu_items = this.state.menu.map((item, index) =>{
             return item.path === '/user' 
-            ? <Link className="nav_link" to={item.path} component={item.component}>
+            ? <Link key={index} className="nav_link" to={item.path} component={item.component}>
                 <li name={item.path}>{item.name}</li>
             </Link>
-            : <Link className="nav_link" to={item.path}>
+            : <Link key={index} className="nav_link" to={item.path}>
                 <li name={item.path}>{item.name}</li> 
             </Link> 
         })
