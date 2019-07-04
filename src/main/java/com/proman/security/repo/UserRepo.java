@@ -11,6 +11,8 @@ import com.proman.security.model.User;
 @Repository
 public interface UserRepo extends JpaRepository<User, Long> {
 
+	Optional<User> findById(Long id);
+
 	Optional<User> findByEmail(String email);
 
 	Optional<User> findByUsernameOrEmail(String username, String email);

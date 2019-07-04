@@ -66,7 +66,7 @@ public class AuthController {
 
 	@PostMapping("/checkUserStatus")
 	public boolean userStatus(@Valid @RequestBody CheckisAuthenticated userInfo) {
-
+		// update to SecurityContextHolder and isAuthenticated
 		boolean isAuthenticated = tokenProvider.validateToken(userInfo.getAccessToken());
 		return isAuthenticated;
 	}
@@ -83,7 +83,7 @@ public class AuthController {
 
 		// Creating user's account
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				signUpRequest.getPassword());
+				signUpRequest.getPassword(), signUpRequest.getCompany());
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 

@@ -1,8 +1,12 @@
 package com.payloads;
 
+import java.util.Set;
+
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+
+import com.proman.backendApp.model.Company;
 
 public class SignUpRequest {
 
@@ -22,6 +26,16 @@ public class SignUpRequest {
 	@NotBlank
 	@Size(min = 6, max = 20)
 	private String password;
+
+	private Set<Company> company;
+
+	public Set<Company> getCompany() {
+		return company;
+	}
+
+	public void setCompany(Set<Company> company) {
+		this.company = company;
+	}
 
 	public String getName() {
 		return name;

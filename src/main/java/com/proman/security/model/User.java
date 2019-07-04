@@ -1,6 +1,8 @@
 
 package com.proman.security.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.proman.backendApp.model.Company;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -42,6 +44,7 @@ public class User {
 	private String email;
 
 	@NotBlank
+	@JsonIgnore
 	@Size(max = 100)
 	private String password;
 
@@ -49,15 +52,20 @@ public class User {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+	private Set<Company> company = new HashSet<>();
+
 	public User() {
 
 	}
 
-	public User(String name, String username, String email, String password) {
+	public User(String name, String username, String email, String password, Set<Company> company) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.company = company;
 	}
 
 	public Long getId() {
@@ -106,6 +114,14 @@ public class User {
 
 	public void setRoles(Set<Role> roles) {
 		this.roles = roles;
+	}
+
+	public Set<Company> getCompany() {
+		return company;
+	}
+
+	public void setCompany(Set<Company> company) {
+		this.company = company;
 	}
 
 }

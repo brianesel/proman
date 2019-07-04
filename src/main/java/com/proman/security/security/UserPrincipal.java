@@ -3,6 +3,7 @@ package com.proman.security.security;
 import java.util.Collection;
 import java.util.List;
 import java.util.Objects;
+import java.util.Set;
 import java.util.stream.Collectors;
 
 import org.springframework.security.core.GrantedAuthority;
@@ -10,6 +11,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.proman.backendApp.model.Company;
 import com.proman.security.model.User;
 
 public class UserPrincipal implements UserDetails {
@@ -20,6 +22,8 @@ public class UserPrincipal implements UserDetails {
 
 	private String username;
 
+	private Set<Company> company;
+
 	@JsonIgnore
 	private String email;
 
@@ -28,12 +32,13 @@ public class UserPrincipal implements UserDetails {
 
 	private Collection<? extends GrantedAuthority> authorities;
 
-	public UserPrincipal(Long id, String name, String username, String email, String password,
+	public UserPrincipal(Long id, String name, String username, String email, String password, Set<Company> company,
 			Collection<? extends GrantedAuthority> authorities) {
 		this.id = id;
 		this.name = name;
 		this.username = username;
 		this.email = email;
+		this.company = company;
 		this.password = password;
 		this.authorities = authorities;
 	}
@@ -43,7 +48,7 @@ public class UserPrincipal implements UserDetails {
 				.map(role -> new SimpleGrantedAuthority(role.getName().name())).collect(Collectors.toList());
 
 		return new UserPrincipal(user.getId(), user.getName(), user.getUsername(), user.getEmail(), user.getPassword(),
-				authorities);
+				user.getCompany(), authorities);
 	}
 
 	public Long getId() {
@@ -56,6 +61,10 @@ public class UserPrincipal implements UserDetails {
 
 	public String getEmail() {
 		return email;
+	}
+
+	public Set<Company> getCompany() {
+		return company;
 	}
 
 	@Override
