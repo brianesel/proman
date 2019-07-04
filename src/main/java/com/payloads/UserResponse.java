@@ -2,9 +2,8 @@ package com.payloads;
 
 import javax.validation.constraints.NotBlank;
 
-public class UserRequest {
+public class UserResponse {
 
-    @NotBlank
     private String accessToken;
 
     public String getaccessToken() {

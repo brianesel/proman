@@ -58,11 +58,12 @@ public class User {
 
 	}
 
-	public User(String name, String username, String email, String password) {
+	public User(String name, String username, String email, String password, Set<Company> company) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
 		this.password = password;
+		this.company = company;
 	}
 
 	public Long getId() {

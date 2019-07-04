@@ -1,6 +1,13 @@
 package com.proman.security.controller;
 
+import java.util.Optional;
+
+import com.proman.security.model.User;
+import com.proman.security.repo.UserRepo;
+
 import com.proman.security.security.UserPrincipal;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -13,14 +20,18 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/user")
 public class UserController {
 
-    @RequestMapping(value = "/username", method = RequestMethod.GET)
-    @PreAuthorize("hasRole('USER')")
+    @Autowired
+    private UserRepo userRepo;
+
+    @RequestMapping(value = "/info", method = RequestMethod.GET)
+    @PreAuthorize("hasRole('ROLE_USER')")
     @ResponseBody
-    public Long currentUserName() {
+    public Object currentUser() {
+
         Long userId;
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         userId = ((UserPrincipal) principal).getId();
-        return userId;
+        return userRepo.findById(userId);
     }
 
     @GetMapping("/admin")
