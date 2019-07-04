@@ -66,7 +66,7 @@ public class AuthController {
 
 	@PostMapping("/checkUserStatus")
 	public boolean userStatus(@Valid @RequestBody CheckisAuthenticated userInfo) {
-
+		// update to SecurityContextHolder and isAuthenticated
 		boolean isAuthenticated = tokenProvider.validateToken(userInfo.getAccessToken());
 		return isAuthenticated;
 	}
