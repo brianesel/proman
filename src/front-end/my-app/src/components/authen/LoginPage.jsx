@@ -39,6 +39,7 @@ class SigninPage extends Component {
         AuthenticationRequest
             .loginUser(user)
             .then((response) => {
+                console.log(response);
                 cooky.setItem('accessTokenEncrypted',CryptoJS.AES.encrypt(response.data.accessToken,'somerandomsecretkey'));
                 cooky.setItem('userOathTokenType', response.data.tokenType);
                 AuthenticationRequest
@@ -69,6 +70,7 @@ class SigninPage extends Component {
                         </div>
                     </div>
                     <button onClick={this.signinClicked}>Submit</button>
+                    <Link className="link_after_submit" to="/signup">Create account here</Link>
                 </div>
             </div>
         )

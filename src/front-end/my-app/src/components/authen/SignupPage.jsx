@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { Link } from "react-router-dom";
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 
 class SignupPage extends Component {
@@ -74,6 +75,7 @@ class SignupPage extends Component {
                         </div>
                     </div>
                     <button onClick={this.signupClicked}>Submit</button>
+                    <Link className="link_after_submit" to="/signin">Already registered?</Link>
                 </div>
             </div>
         )

@@ -53,7 +53,7 @@
 
         button {
             position: relative;
-            margin: 16px 0 10px;
+            margin: 16px 0 14px;
             background-color: #6059f6;
             width: 100px;
             height: 35px;
@@ -67,6 +67,11 @@
                 color: white;
                 cursor: pointer;
             }
+        }
+
+        .link_after_submit {
+            display: block;
+            margin-bottom: 10px; 
         }
     }
 }

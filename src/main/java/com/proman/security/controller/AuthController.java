@@ -11,6 +11,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -65,9 +66,10 @@ public class AuthController {
 	}
 
 	@PostMapping("/checkUserStatus")
-	public boolean userStatus(@Valid @RequestBody CheckisAuthenticated userInfo) {
+	public boolean userStatus() {
 		// update to SecurityContextHolder and isAuthenticated
-		boolean isAuthenticated = tokenProvider.validateToken(userInfo.getAccessToken());
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
+		boolean isAuthenticated = authentication.isAuthenticated();
 		return isAuthenticated;
 	}
 
