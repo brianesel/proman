@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { Link, NavLink } from "react-router-dom";
 import SignupPage from '../../authen/SignupPage'
-import UserProfile from '../../user/UserInfo'
+import UserDashboard from '../../user/UserDashboard'
 import logo from '../../../logo.png'
 import '../../../css/layouts/landingNav.scss'
 
@@ -30,7 +30,7 @@ class LandingMenu extends Component {
                 {
                     name: 'My account',
                     path: '/user',
-                    component: {UserProfile}
+                    component: {UserDashboard}
                 },
                 {
                     name: 'Contact',

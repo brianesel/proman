@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
-import { Switch } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import Nav from '../navigator/UserNav'
+import UserProfile from '../../user/UserProfile'
 
 export default class UserProfileLay extends Component {
 
@@ -15,9 +16,12 @@ export default class UserProfileLay extends Component {
         return (
             <div className="userprofile_wrapper">
                 <Nav/>
-                <Switch>
-                    
-                </Switch>
+                <div className="body_wrapper">
+                    <p>Headers</p>
+                    <Switch>
+                        <Route exact path="/myprofile" component={UserProfile}/>
+                    </Switch>
+                </div>
             </div>
         )
     }
