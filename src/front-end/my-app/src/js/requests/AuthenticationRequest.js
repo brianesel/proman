@@ -26,7 +26,6 @@ class AuthenticationRequest {
     }
 
     checkUserLoggedin(props,path) {
-        console.log("runing");
         return axios
         .post(`${API_URL}/api/auth/checkUserStatus`, {
             headers: {
@@ -35,7 +34,6 @@ class AuthenticationRequest {
             }
         })
         .then((response)=>{
-            console.log(response);
             if(response.data===true || response.data ==="true") {
                 this.isAuthenticated = true;
                 if(props !== null && props !== undefined ){    

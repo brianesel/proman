@@ -39,7 +39,6 @@ class SigninPage extends Component {
         AuthenticationRequest
             .loginUser(user)
             .then((response) => {
-                console.log(response);
                 cooky.setItem('accessTokenEncrypted',CryptoJS.AES.encrypt(response.data.accessToken,'somerandomsecretkey'));
                 cooky.setItem('userOathTokenType', response.data.tokenType);
                 AuthenticationRequest

@@ -12,10 +12,6 @@ import UserDashboard from './components/user/UserDashboard'
 import UserProfileLay from './components/layouts/body/UserProfileLay'
 
 class App extends Component {
-  constructor(){
-    super()
-    console.log("app.js");
-  }
   render() { 
     return (
       <BrowserRouter>
