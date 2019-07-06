@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
-import AuthenticationRequest from '../../js/requests/AuthenticationRequest'
+import UserRequest from '../../js/requests/UserRequest'
 import { Link } from 'react-router-dom'
-import CryptoJS from 'crypto-js'
 
 class UserDashboard extends Component {
 
@@ -26,14 +25,8 @@ class UserDashboard extends Component {
     }
 
     updateClicked() {
-        let cooky = window.localStorage;
-        let user = {
-            accessToken : cooky.getItem('userOathTokenType')+" "+ (CryptoJS.AES.decrypt((cooky.getItem('accessTokenEncrypted')).toString(), 'somerandomsecretkey')).toString(CryptoJS.enc.Utf8),
-            contentType: 'application/json'
-        }
-        console.log(user.accessToken);
-        AuthenticationRequest
-            .getUserInfo(user)
+        UserRequest
+            .getUserInfo()
             .then((response) => {
                 console.log(response);
             })

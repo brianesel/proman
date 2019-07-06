@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 
-export default class UserNav extends Component {
+export default class UserPortfolio extends Component {
 
     constructor(props) {
         super(props)
@@ -12,7 +12,7 @@ export default class UserNav extends Component {
     render() {
         return (
             <div>
-                THIS IS USER Nav
+                THIS IS USER portfolio
             </div>
         )
     }

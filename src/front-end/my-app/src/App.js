@@ -7,7 +7,9 @@ import SignUp from './components/authen/SignupPage'
 import SignIn from './components/authen/LoginPage'
 import NotFound from './components/error/PageNotFound'
 import {ProtectedRoute} from './components/router/ProtectedRoute'
+import {RedirectedRoute} from './components/router/RedirectedRoute'
 import UserDashboard from './components/user/UserDashboard'
+import UserProfileLay from './components/layouts/body/UserProfileLay'
 
 class App extends Component {
   constructor(){
@@ -23,6 +25,9 @@ class App extends Component {
           <Route path="/signup" component={SignUp}/>
           <Route path="/signin" component={SignIn}/>
           <ProtectedRoute exact path="/user" component={UserDashboard}/>
+          <ProtectedRoute exact path="/myprofile" component={UserProfileLay}/>
+          <ProtectedRoute path="/user"/>
+          <ProtectedRoute path="/myprofile"/>
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>

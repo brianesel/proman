@@ -4,7 +4,7 @@ import './index.css';
 import App from './App';
 import * as serviceWorker from './serviceWorker';
 
-ReactDom.render(<App />,
+ReactDom.render(<App/>,
     document.getElementById('app')
   );
 

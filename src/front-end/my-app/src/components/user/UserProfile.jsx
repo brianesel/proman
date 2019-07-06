@@ -12,7 +12,7 @@ export default class UserProfile extends Component {
     render() {
         return (
             <div>
-                THIS IS USER DASHBOARD
+                THIS IS USER UserProfile
             </div>
         )
     }

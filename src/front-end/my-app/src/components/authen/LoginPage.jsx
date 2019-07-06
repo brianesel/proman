@@ -1,21 +1,21 @@
 import React, { Component } from 'react'
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
-import { Link } from "react-router-dom";
+import { Link, Redirect } from "react-router-dom";
 import '../../css/authen/SigninPage.scss'
 
 class SigninPage extends Component {
 
     constructor(props) {
         super(props)
-
         this.state = {
             userId: '',
             password: '',
             hasLoginFailed: false,
-            showSuccessMessage: false
+            showSuccessMessage: false,
+            redirectRoute: "/myprofile"
         }
-
+        AuthenticationRequest.checkUserLoggedin(props,"/myprofile");
         this.handleUserChange = this.handleUserChange.bind(this)
         this.handlePasswordChange = this.handlePasswordChange.bind(this)
         this.signinClicked = this.signinClicked.bind(this)
@@ -43,13 +43,7 @@ class SigninPage extends Component {
                 cooky.setItem('accessTokenEncrypted',CryptoJS.AES.encrypt(response.data.accessToken,'somerandomsecretkey'));
                 cooky.setItem('userOathTokenType', response.data.tokenType);
                 AuthenticationRequest
-                    .checkUserLoggedin(response.data.tokenType + " " + response.data.accessToken)
-                    .then((response) => {
-                        if (response.data === true || response.data === "true"){
-                            AuthenticationRequest.isAuthenticated = true;
-                        }
-                        else { console.log(response.data)}
-                    })
+                .checkUserLoggedin(this.props, this.state.redirectRoute) 
             })
             .catch()
     }
