@@ -9,6 +9,11 @@ class AuthenticationRequest {
         this.isAuthenticated = false;
     }
 
+    logout() {
+        localStorage.removeItem('accessTokenEncrypted');
+        this.isAuthenticated = false;
+    }
+
     registerNewUser(userInfo) {
         return axios.post(`${API_URL}/api/auth/signup`, {
             username : userInfo.username,

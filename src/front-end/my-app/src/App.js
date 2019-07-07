@@ -17,13 +17,12 @@ class App extends Component {
       <BrowserRouter>
         <Switch>
           <Route exact path="/welcome" component={WelcomePage}/>
-          <Route exact path="/landing" component={LandingPage}/>
+          <Route path="/landing" component={LandingPage}/>
           <Route path="/signup" component={SignUp}/>
           <Route path="/signin" component={SignIn}/>
           <ProtectedRoute exact path="/user" component={UserDashboard}/>
-          <ProtectedRoute exact path="/myprofile" component={UserProfileLay}/>
+          <ProtectedRoute path="/myprofile" component={UserProfileLay}/>
           <ProtectedRoute path="/user"/>
-          <ProtectedRoute path="/myprofile"/>
           <Route component={NotFound} />
         </Switch>
       </BrowserRouter>
