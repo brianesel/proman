@@ -11,7 +11,6 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContext;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -32,7 +31,6 @@ import com.payloads.ApiResponse;
 import com.payloads.JwtAuthenticationResponse;
 import com.payloads.LoginRequest;
 import com.payloads.SignUpRequest;
-import com.payloads.CheckisAuthenticated;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -85,7 +83,8 @@ public class AuthController {
 
 		// Creating user's account
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
-				signUpRequest.getPassword(), signUpRequest.getCompany());
+				signUpRequest.getDateOfBirth(), signUpRequest.getLocation(), signUpRequest.getPassword(),
+				signUpRequest.getPhoneNumber(), signUpRequest.getDegree(), signUpRequest.getCompany());
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 
