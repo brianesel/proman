@@ -19,7 +19,10 @@ class AuthenticationRequest {
             username : userInfo.username,
             password : userInfo.password,
             email : userInfo.email,
-            name : userInfo.name
+            name : userInfo.name,
+            phoneNumber: userInfo.phoneNumber,
+            location: userInfo.location,
+            degree: userInfo.degree
         })
     }
 

@@ -1,6 +1,7 @@
 
 package com.proman.security.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.proman.backendApp.model.Company;
 
@@ -24,6 +25,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
+import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
@@ -41,10 +43,10 @@ public class User {
 	@Size(max = 15)
 	private String username;
 
-	@Size(max = 25)
-	private int phoneNumber;
+	@Size(max = 100)
+	private String phoneNumber;
 
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
 
 	@Size(max = 200)
@@ -77,7 +79,7 @@ public class User {
 	}
 
 	public User(String name, String username, String email, Date dateOfBirth, String location, String password,
-			int phoneNumber, String degree, Set<Company> company) {
+			String phoneNumber, String degree, Set<Company> company) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -138,18 +140,18 @@ public class User {
 	}
 
 	public String getDegree() {
-		return location;
+		return degree;
 	}
 
 	public void setDegree(String degree) {
 		this.degree = degree;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

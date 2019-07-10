@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import AuthenticationRequest from '../../js/requests/AuthenticationRequest';
 import CryptoJS from 'crypto-js'
-import { Link, Redirect } from "react-router-dom";
+import { Link } from "react-router-dom";
 import '../../css/authen/SigninPage.scss'
 
 class SigninPage extends Component {

@@ -3,13 +3,14 @@ package com.payloads;
 import java.sql.Date;
 import java.util.Set;
 
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proman.backendApp.model.Company;
+
+import org.hibernate.validator.constraints.Length;
 
 public class SignUpRequest {
 
@@ -26,10 +27,10 @@ public class SignUpRequest {
 	@Email
 	private String email;
 
-	@Size(max = 25)
-	private int phoneNumber;
+	@Size(max = 100)
+	private String phoneNumber;
 
-	@Temporal(TemporalType.DATE)
+	@JsonFormat(pattern = "yyyy-MM-dd")
 	private Date dateOfBirth;
 
 	@Size(max = 200)
@@ -100,11 +101,11 @@ public class SignUpRequest {
 		this.degree = degree;
 	}
 
-	public int getPhoneNumber() {
+	public String getPhoneNumber() {
 		return phoneNumber;
 	}
 
-	public void setPhoneNumber(int phoneNumber) {
+	public void setPhoneNumber(String phoneNumber) {
 		this.phoneNumber = phoneNumber;
 	}
 

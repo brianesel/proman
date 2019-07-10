@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from "react-router-dom";
+import '../../../css/layouts/UserNav.scss'
 
 export default class UserNav extends Component {
 
@@ -31,9 +32,7 @@ export default class UserNav extends Component {
     render() {
         this.menu_items = this.state.menu.map((item, index) =>{
             
-            return <Link key={index} className="nav_link" to={item.path}>
-                <li name={item.path}>{item.name}</li> 
-            </Link> 
+            return <Link key={index} className="nav_link" to={item.path}> {item.name}</Link> 
         })
         return (
             <div className="nav-container">

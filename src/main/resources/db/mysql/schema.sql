@@ -25,6 +25,10 @@ CREATE TABLE `users` (
   `name` varchar (50) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
   `username` varchar (50) unique NULL,
+  `location` varchar (200) DEFAULT NULL,
+  `degree` varchar (200) DEFAULT NULL,
+  `phone_number` VARCHAR (100) DEFAULT NULL,
+  `date_of_birth` DATE DEFAULT NULL,
   PRIMARY KEY (`id`),
   UNIQUE KEY `UKob8kqyqqgmefl0aco34akdtpe` (`email`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -48,3 +52,6 @@ CREATE TABLE `user_company` (
   CONSTRAINT `grBHZaVzKQ569qkyEp5g4MYMMpf` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
   CONSTRAINT `z72C5GgxvXs5ut4C5eS3j5Gbua7` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
+INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');

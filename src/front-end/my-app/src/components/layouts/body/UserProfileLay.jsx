@@ -7,6 +7,11 @@ import UserContact from '../../user/UserContact'
 import UserPortfolio from '../../user/UserPortfolio'
 import UserResume from '../../user/UserResume'
 
+const section_wrapperStyle = {
+    paddingTop: "50px",
+    width: "90%",
+    margin: 'auto'
+}
 export default class UserProfileLay extends Component {
 
     constructor(props) {
@@ -20,7 +25,7 @@ export default class UserProfileLay extends Component {
         return (
             <div className="userprofile_wrapper">
                 <Nav/>
-                <div className="section_wrapper">
+                <div className="section_wrapper" style={section_wrapperStyle}>
                     <p>Headers</p>
                     <div className="body_wrapper">
                         <UserSummary/>

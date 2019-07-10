@@ -14,6 +14,9 @@ class SignupPage extends Component {
             email:'',
             repeatedEmail:'',
             name:'',
+            location: '',
+            phoneNumber: '',
+            degree:'',
             hasLoginFailed: false,
             showSuccessMessage: false
         }
@@ -51,11 +54,11 @@ class SignupPage extends Component {
                     <div className="login_info_container">
                         <div className="login_info password_container">
                             <p>Name</p>
-                            <input name="name" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Password"/>
+                            <input name="name" type="text" value={this.state.name} onChange={this.handleChange} placeholder="Name"/>
                         </div>
                         <div className="login_info password_container">
                             <p>Email</p>
-                            <input name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="Password"/>
+                            <input name="email" type="text" value={this.state.email} onChange={this.handleChange} placeholder="Email@email.com"/>
                         </div>
                         <div className="login_info password_container">
                             <p>Repeat email</p>
@@ -72,6 +75,18 @@ class SignupPage extends Component {
                         <div className="login_info password_container">
                             <p>Repreat password</p>
                             <input name="repeatedPassword" type="password" value={this.state.repeatedPassword} onChange={this.handleChange} placeholder="Password"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Phone</p>
+                            <input name="phoneNumber" type="number" value={this.state.phoneNumber} onChange={this.handleChange} placeholder="0123456789"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Location</p>
+                            <input name="location" type="text" value={this.state.location} onChange={this.handleChange} placeholder="Location"/>
+                        </div>
+                        <div className="login_info password_container">
+                            <p>Degree</p>
+                            <input name="degree" type="text" value={this.state.degree} onChange={this.handleChange} placeholder="Degree"/>
                         </div>
                     </div>
                     <button onClick={this.signupClicked}>Submit</button>

@@ -3,7 +3,7 @@ import Navigator from '../../layouts/navigator/LandingNav'
 import Body from './LandingBody'
 import Footer from '../../layouts/footer/LandingFooter'
 import SignupPage from '../../authen/SignupPage'
-import { Route, Link, Router, Switch } from "react-router-dom";
+import { Route, Link, Switch } from "react-router-dom";
 
 const landingContainerStyle = {
     maxWidth: '1500px',
