@@ -1,7 +1,5 @@
 package com.payloads;
 
-import javax.validation.constraints.NotBlank;
-
 public class UserResponse {
 
     private String accessToken;

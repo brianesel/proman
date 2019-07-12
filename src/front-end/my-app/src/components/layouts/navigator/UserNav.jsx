@@ -31,7 +31,6 @@ export default class UserNav extends Component {
 
     render() {
         this.menu_items = this.state.menu.map((item, index) =>{
-            
             return <Link key={index} className="nav_link" to={item.path}> {item.name}</Link> 
         })
         return (

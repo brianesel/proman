@@ -9,13 +9,25 @@ import UserResume from '../../user/UserResume'
 
 const section_wrapperStyle = {
     paddingTop: "50px",
-    width: "90%",
+    width: "80%",
     margin: 'auto'
+}
+const userprofile_wrapperStyle = {
+    backgroundColor: "#f5f5f5",
+    height: "-webkit-fill-available"
+}
+const headerStyle = {
+    position: "relative",
+    fontSize: "25px",
+    marginTop: "45px",
+    textTransform: "uppercase",
+    fontWeight: "800",
+    display: "block"
 }
 export default class UserProfileLay extends Component {
 
     constructor(props) {
-        super(props)
+        super(props) 
         
         this.state = {
         }
@@ -23,10 +35,10 @@ export default class UserProfileLay extends Component {
 
     render() {
         return (
-            <div className="userprofile_wrapper">
+            <div className="userprofile_wrapper" style={userprofile_wrapperStyle}>
                 <Nav/>
                 <div className="section_wrapper" style={section_wrapperStyle}>
-                    <p>Headers</p>
+                    <p style={headerStyle}>Headers</p>
                     <div className="body_wrapper">
                         <UserSummary/>
                         <Switch>
