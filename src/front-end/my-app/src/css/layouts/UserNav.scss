@@ -1,8 +1,9 @@
-.nav-container {
+.nav-user-container {
     position: fixed;
     width: 100%;
     height: 50px;
     background-color: #ffffff;
+    z-index: 999999;
     .wrapper {
         height: inherit;
         .menu-container {

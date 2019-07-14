@@ -10,6 +10,7 @@ import {ProtectedRoute} from './components/router/ProtectedRoute'
 import {RedirectedRoute} from './components/router/RedirectedRoute'
 import UserDashboard from './components/user/UserDashboard'
 import UserProfileLay from './components/layouts/body/UserProfileLay'
+import 'bootstrap/dist/css/bootstrap.css';
 
 class App extends Component {
   render() { 

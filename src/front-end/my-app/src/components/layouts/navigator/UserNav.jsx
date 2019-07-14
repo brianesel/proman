@@ -34,7 +34,7 @@ export default class UserNav extends Component {
             return <Link key={index} className="nav_link" to={item.path}> {item.name}</Link> 
         })
         return (
-            <div className="nav-container">
+            <div className="nav-user-container">
                 <div className="wrapper">
                     <div className="menu-container">
                         <div className="items">

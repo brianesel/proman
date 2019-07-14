@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import '../../css/user/UserProfile.scss'
 
 export default class UserProfile extends Component {
 
@@ -11,8 +12,25 @@ export default class UserProfile extends Component {
 
     render() {
         return (
-            <div>
-                THIS IS USER UserProfile
+            <div className="user_profile_wrapper user_details_info col-md-8">
+                <section className="about_me">
+                    <p className="headers">About me</p>
+                    <p className="content_text">
+                        asdfawekjmalkwejr;alwekr;alwekra/wle
+                    </p>
+                </section>
+                <section className="about_me">
+                    <p className="headers">About me</p>
+                    <p className="content_text">
+                        asdfawekjmalkwejr;alwekr;alwekra/wle
+                    </p>
+                </section>
+                <section className="about_me">
+                    <p className="headers">About me</p>
+                    <p className="content_text">
+                        asdfawekjmalkwejr;alwekr;alwekra/wle
+                    </p>
+                </section>
             </div>
         )
     }

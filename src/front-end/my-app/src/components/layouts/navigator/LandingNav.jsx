@@ -45,10 +45,10 @@ class LandingMenu extends Component {
         this.menu_items = this.state.menu.map((item, index) =>{
             return item.path === '/user' 
             ? <Link key={index} className="nav_link" to={item.path} component={item.component}>
-                <li name={item.path}>{item.name}</li>
+                {item.name}
             </Link>
             : <Link key={index} className="nav_link" to={item.path}>
-                <li name={item.path}>{item.name}</li> 
+                {item.name} 
             </Link> 
         })
         return (

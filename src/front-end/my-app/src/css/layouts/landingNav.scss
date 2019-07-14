@@ -35,21 +35,19 @@
                 
                 .nav_link {
 
-                    li {
-                        position: relative;
-                        display: inline-block;
-                        width: 20%;
-                        font-weight: 500;
-                        text-align: center;
-                        color: black;
-    
-                        &:hover {
-                            color: #201aa3;
-                            cursor: pointer;
-                            font-weight: 600;
-                            font-size: 18px;
-                            transition-duration: 0.2s;
-                        }
+                    position: relative;
+                    display: inline-block;
+                    width: 20%;
+                    font-weight: 500;
+                    text-align: center;
+                    color: black;
+
+                    &:hover {
+                        color: #201aa3;
+                        cursor: pointer;
+                        font-weight: 600;
+                        font-size: 18px;
+                        transition-duration: 0.2s;
                     }
                 }
             }
