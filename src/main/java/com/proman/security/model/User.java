@@ -4,11 +4,13 @@ package com.proman.security.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.SocialMedia;
 
 import java.sql.Date;
 import java.util.HashSet;
 import java.util.Set;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -17,15 +19,13 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
-import org.hibernate.validator.constraints.Length;
 
 @Entity
 @Table(name = "users")
@@ -61,6 +61,10 @@ public class User {
 	@Email
 	private String email;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	private SocialMedia SocialMedia;
+
 	@NotBlank
 	@JsonIgnore
 	@Size(max = 100)
@@ -80,7 +84,7 @@ public class User {
 	}
 
 	public User(String name, String username, String email, Date dateOfBirth, String location, String password,
-			String phoneNumber, String degree, Set<Company> company) {
+			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -90,6 +94,7 @@ public class User {
 		this.location = location;
 		this.degree = degree;
 		this.phoneNumber = phoneNumber;
+		this.SocialMedia = SocialMedia;
 	}
 
 	public Long getId() {
@@ -180,4 +185,11 @@ public class User {
 		this.company = company;
 	}
 
+	public SocialMedia getSocialMedia() {
+		return SocialMedia;
+	}
+
+	public void setSocialMedia(SocialMedia SocialMedia) {
+		this.SocialMedia = SocialMedia;
+	}
 }

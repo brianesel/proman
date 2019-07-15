@@ -9,6 +9,7 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.SocialMedia;
 
 import org.hibernate.validator.constraints.Length;
 
@@ -42,6 +43,8 @@ public class SignUpRequest {
 	@NotBlank
 	@Size(min = 6, max = 20)
 	private String password;
+
+	private SocialMedia SocialMedia;
 
 	private Set<Company> company;
 
@@ -115,5 +118,13 @@ public class SignUpRequest {
 
 	public void setPassword(String password) {
 		this.password = password;
+	}
+
+	public SocialMedia getSocialMedia() {
+		return SocialMedia;
+	}
+
+	public void setSocialMedia(SocialMedia SocialMedia) {
+		this.SocialMedia = SocialMedia;
 	}
 }

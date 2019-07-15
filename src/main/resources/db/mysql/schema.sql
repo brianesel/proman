@@ -53,5 +53,15 @@ CREATE TABLE `user_company` (
   CONSTRAINT `z72C5GgxvXs5ut4C5eS3j5Gbua7` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `social_media` (
+  `id` bigint(20) NOT NULL,
+  `linkedin` varchar(8000) DEFAULT NULL,
+  `github` varchar(8000) DEFAULT NULL,
+  `twitter` varchar(8000) DEFAULT NULL,
+  `facebook` varchar(8000) DEFAULT NULL,
+  KEY `g34RGaVzKQ53RFDyEp5g4MYMMpf` (`id`),
+  CONSTRAINT `g34RGaVzKQ53RFDyEp5g4MYMMpf` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
 INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
 INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');
