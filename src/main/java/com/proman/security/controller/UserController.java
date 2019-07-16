@@ -1,8 +1,5 @@
 package com.proman.security.controller;
 
-import java.util.Optional;
-
-import com.proman.security.model.User;
 import com.proman.security.repo.UserRepo;
 
 import com.proman.security.security.UserPrincipal;
