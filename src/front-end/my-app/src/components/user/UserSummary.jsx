@@ -7,17 +7,13 @@ export default class UserSummary extends Component {
 
     constructor(props) {
         super(props)
-        this.getUserSummary();
         this.state = {
             user : {
-                name:'12',
-                age:'',
-                location:'',
-                degree:'',
-                phoneNumber:'',
-                email:'',
+                
             }
         }
+
+        this.getUserSummary();
 
     }
 
@@ -25,18 +21,31 @@ export default class UserSummary extends Component {
         UserRequest
         .getUserInfo()
         .then((response)=>{
-            console.log(response)
-            this.setState({user:response.data})
+            console.log(response.data)
+            this.setState({
+                user : response.data
+            })
+            console.log(this.state.user)
         })
     }
 
     render() {
         this.user_infos = Object.keys(this.state.user).map((key) =>{
-            
-            return  <li key={key} className="row">
-                        <div className="info_header col-6">{key}:</div>
-                        <div className="info_content col-6">{this.state.user[key]}</div>
-                    </li>
+            if(key === "socialMedia"){
+                return this.user_socialMedia = Object.keys(this.state.user.socialMedia).map((item) => {
+                    if(item !== "id"){
+                        return <li key={item} className="row">
+                                    <div className="info_header col-6">{item}:</div>
+                                    <div className="info_content col-6">{this.state.user.socialMedia[item]}</div>
+                                </li>
+                    }
+                })
+            }else {
+                return  <li key={key} className="row">
+                            <div className="info_header col-6">{key}:</div>
+                            <div className="info_content col-6">{this.state.user[key]}</div>
+                        </li>
+            }
         })
         return (
             <div className="user_summary_wrapper col-md-4">

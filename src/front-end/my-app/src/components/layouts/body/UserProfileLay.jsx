@@ -14,8 +14,7 @@ const section_wrapperStyle = {
     margin: 'auto'
 }
 const userprofile_wrapperStyle = {
-    backgroundColor: "#f5f5f5",
-    height: "-webkit-fill-available"
+    backgroundColor: "#f5f5f5"
 }
 const headerStyle = {
     position: "relative",
