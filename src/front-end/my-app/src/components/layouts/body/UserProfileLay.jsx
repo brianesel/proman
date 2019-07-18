@@ -10,7 +10,7 @@ import '../../../css/user/UserLay.css'
 
 const section_wrapperStyle = {
     paddingTop: "50px",
-    width: "80%",
+    width: "75%",
     margin: 'auto'
 }
 const userprofile_wrapperStyle = {
