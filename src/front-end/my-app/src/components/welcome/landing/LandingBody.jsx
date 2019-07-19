@@ -1,4 +1,8 @@
 import React, { Component } from 'react';
+import { Route, Link, Switch } from "react-router-dom";
+import AboutMe from './LandingBodyComponent/AboutMe'
+import Services from './LandingBodyComponent/Services'
+import Contact from './LandingBodyComponent/Contact'
 
 export default class LandingBody extends Component {
 
@@ -12,7 +16,9 @@ export default class LandingBody extends Component {
     render() {
         return (
             <div>
-                Body
+                <Route exact path="/landing" component={AboutMe}/>
+                <Route exact path="/landing" component={Services}/>
+                <Route exact path="/landing" component={Contact}/>
             </div>
         )
     }
