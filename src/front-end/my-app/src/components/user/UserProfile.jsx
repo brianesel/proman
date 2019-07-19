@@ -12,7 +12,7 @@ export default class UserProfile extends Component {
 
     render() {
         return (
-            <div className="user_profile_wrapper user_details_info col-md-8">
+            <div className="user_profile_wrapper user_details_info col-md-8 col-lg-8">
                 <section className="about_me">
                     <p className="headers">About me</p>
                     <p className="content_text">
@@ -20,13 +20,13 @@ export default class UserProfile extends Component {
                     </p>
                 </section>
                 <section className="about_me">
-                    <p className="headers">About me</p>
+                    <p className="headers">Services</p>
                     <p className="content_text">
                         asdfawekjmalkwejr;alwekr;alwekra/wle
                     </p>
                 </section>
                 <section className="about_me">
-                    <p className="headers">About me</p>
+                    <p className="headers">Skills</p>
                     <p className="content_text">
                         asdfawekjmalkwejr;alwekr;alwekra/wle
                     </p>

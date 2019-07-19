@@ -18,7 +18,7 @@
         .user_basic_info {
             img {
                 width: 100%;
-                height: 200px;
+                max-height: 300px;
                 margin-bottom: 16px;
             }
             .user_info_text {
@@ -33,6 +33,22 @@
                     }
                     .info_content {
                         display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .user_social_media {
+            .social_contents {
+                width: 75%;
+                margin: auto;
+                .social_profile_link {
+                    display: inline-block;
+                    font-size: 35px;
+                    width: 25%;
+                    &:hover {
+                        color: #201aa3;
+                        cursor: pointer;
                     }
                 }
             }
