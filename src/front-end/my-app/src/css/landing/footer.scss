@@ -1,0 +1,37 @@
+@import '../variables.scss';
+
+.footer_container {
+    background-color: $primaryBlueLighter; 
+    .footer_wrapper {
+        padding: 50px 0;
+        width: 80%;
+        margin: auto;
+        .footer_content {
+            text-align: center;
+            color: $primaryWhite;
+            section {
+                .header {
+                    font-size: 20px;
+                    font-weight: 900;
+                    text-transform: uppercase;
+                    margin: 5px 10px 20px;
+                }
+                .text_content { 
+                    margin: 0 3px;
+                }
+                .social_media_content {
+                    margin: 0 20px;
+                    .social_profile_link {
+                        display: inline-block;
+                        width: 25%;
+                        font-size: 35px;
+                        color: $primaryWhite;
+                        &:hover {
+                            color: $primaryBlueGreenLight;
+                        }
+                    }
+                }
+            }
+        }
+    }
+}

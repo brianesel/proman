@@ -1,0 +1,46 @@
+@import '../variables.scss';
+
+.contact_container {
+    background-color: $primaryBlueGreenLight;
+    .contact_wrapper {
+        width: 65%;
+        margin: auto;
+        padding: 40px 0;
+        .contact_content {
+            .header {
+                text-align: center;
+                color: $primaryWhite;
+                font-size: 28px;
+                font-weight: 500;
+            }
+            .contact_list {
+                width: 100%;
+                margin: 0;
+                .info {
+                    display: block;
+                    margin: 9px;
+                    input {
+                        width: 100%;
+                        border-radius: 5px;
+                        color: $primaryBlueDark;
+                    }
+                }
+                .messages textarea {
+                    height: 100px;
+                    width: 100%;
+                    border-radius: 5px;
+                    color: $primaryBlueDark;
+                }
+            }
+            button {
+                margin: 9px;
+                text-align: left;
+                border-radius: 5px;
+                padding: 9px 15px;
+                font-weight: 500;
+                color: $primaryBlueDark;
+                background-color: $primaryWhite;
+            }
+        }
+    }
+}

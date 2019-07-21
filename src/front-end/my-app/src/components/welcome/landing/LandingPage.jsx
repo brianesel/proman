@@ -11,8 +11,7 @@ const landingContainerStyle = {
 }
 
 const bodyStyle = {
-    maxWidth: '1300px',
-    padding: '15px',
+    width: '100%',
     margin: 'auto'
 }
 

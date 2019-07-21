@@ -71,10 +71,10 @@ export default class UserSummary extends Component {
                             Social profiles
                         </p>
                         <div className="section_contents social_contents">
-                            <a className="social_profile_link" href={this.state.user.socialMedia.facebook}><i className="fa fa-facebook"/></a>
-                            <a className="social_profile_link" href={this.state.user.socialMedia.twitter}><i className="fa fa-twitter"/></a>
-                            <a className="social_profile_link" href={this.state.user.socialMedia.linkedin}><i className="fa fa-linkedin"/></a>
-                            <a className="social_profile_link" href={this.state.user.socialMedia.github}><i className="fa fa-github"/></a>
+                            <a className="social_profile_link" href={this.state.user.socialMedia.facebook}><i class="fab fa-facebook"/></a>
+                            <a className="social_profile_link" href={this.state.user.socialMedia.twitter}><i className="fab fa-twitter"/></a>
+                            <a className="social_profile_link" href={this.state.user.socialMedia.linkedin}><i className="fab fa-linkedin"/></a>
+                            <a className="social_profile_link" href={this.state.user.socialMedia.github}><i className="fab fa-github"/></a>
                         </div>
                     </section>
                     <section className="user_contact user_info">
