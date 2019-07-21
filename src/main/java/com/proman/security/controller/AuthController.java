@@ -3,6 +3,7 @@ package com.proman.security.controller;
 import java.net.URI;
 import java.util.Collections;
 
+import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,18 +14,22 @@ import org.springframework.security.authentication.UsernamePasswordAuthenticatio
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestHeader;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import org.springframework.util.StringUtils;
 import com.proman.security.exception.AppException;
 import com.proman.security.model.Role;
 import com.proman.security.model.RoleName;
 import com.proman.security.model.User;
 import com.proman.security.repo.RoleRepo;
 import com.proman.security.repo.UserRepo;
+import com.proman.security.security.JwtAuthenticationFilter;
 import com.proman.security.security.JwtTokenProvider;
 
 import com.payloads.ApiResponse;
@@ -51,6 +56,9 @@ public class AuthController {
 	@Autowired
 	JwtTokenProvider tokenProvider;
 
+	@Autowired
+	JwtAuthenticationFilter jwtAuthenFilter;
+
 	@PostMapping("/signin")
 	public ResponseEntity<?> authenticateUser(@Valid @RequestBody LoginRequest loginRequest) {
 
@@ -63,12 +71,22 @@ public class AuthController {
 		return ResponseEntity.ok(new JwtAuthenticationResponse(jwt));
 	}
 
-	@PostMapping("/checkUserStatus")
-	public boolean userStatus() {
-		// update to SecurityContextHolder and isAuthenticated
+	@GetMapping("/checkUserStatus")
+	public boolean userStatus(@RequestHeader("Authorization") String bearerToken) {
 		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		boolean isAuthenticated = authentication.isAuthenticated();
-		return isAuthenticated;
+		String jwt;
+		if (StringUtils.hasText(bearerToken) && bearerToken.startsWith("Bearer ")) {
+			jwt = bearerToken.substring(7, bearerToken.length());
+		} else {
+			jwt = null;
+		}
+		boolean checkToken = tokenProvider.validateToken(jwt);
+		if (isAuthenticated == true && checkToken == true) {
+			return true;
+		} else {
+			return false;
+		}
 	}
 
 	@PostMapping("/signup")

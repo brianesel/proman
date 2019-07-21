@@ -26,7 +26,6 @@ export default class UserSummary extends Component {
             this.setState({
                 user : response.data
             })
-            console.log(this.state.user)
         })
     }
 
@@ -71,7 +70,7 @@ export default class UserSummary extends Component {
                             Social profiles
                         </p>
                         <div className="section_contents social_contents">
-                            <a className="social_profile_link" href={this.state.user.socialMedia.facebook}><i class="fab fa-facebook"/></a>
+                            <a className="social_profile_link" href={this.state.user.socialMedia.facebook}><i className="fab fa-facebook"/></a>
                             <a className="social_profile_link" href={this.state.user.socialMedia.twitter}><i className="fab fa-twitter"/></a>
                             <a className="social_profile_link" href={this.state.user.socialMedia.linkedin}><i className="fab fa-linkedin"/></a>
                             <a className="social_profile_link" href={this.state.user.socialMedia.github}><i className="fab fa-github"/></a>
