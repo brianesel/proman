@@ -35,6 +35,7 @@ build/
 
 # dependencies
 /src/front-end/my-app/node_modules
+/src/front-end/my-app/package.json
 /src/front-end/my-app/.pnp
 /src/front-end/my-app.pnp.js
 
