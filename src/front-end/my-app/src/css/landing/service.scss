@@ -1,0 +1,23 @@
+@import '../variables.scss';
+
+.services_container {
+    .services_wrapper {
+        width: 65%;
+        margin: 40px auto;
+        text-align: center;
+        .services_content {
+            .header {
+                color: $primaryBlueDark;
+                font-size: 28px;
+                font-weight: 500;
+            }
+            .services_list {
+                width: 100%;
+                margin: 0;
+                .services_item_container {
+                    padding: 5px;
+                }
+            }
+        }
+    }
+}

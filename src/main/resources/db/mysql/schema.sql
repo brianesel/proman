@@ -6,20 +6,62 @@ ALTER DATABASE promanDB
 
 USE promanDB;
 
-CREATE TABLE IF NOT EXISTS users (
-  id INT(4) UNSIGNED NOT NULL AUTO_INCREMENT PRIMARY KEY,
-  first_name VARCHAR(30),
-  last_name VARCHAR(30),
-  email VARCHAR(100),
-  username VARCHAR(50),
-  password VARCHAR(100),
-  role VARCHAR(10)
-); 
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot1', '123123', 'bot1@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot2', '123123', 'bot2@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot3', '123123', 'bot3@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot4', '123123', 'bot4@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot5', '123123', 'bot5@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot6', '123123', 'bot6@gmail.com', 'member');
-INSERT IGNORE INTO users (username, password, email, role) VALUES ('bot7', '123123', 'bot7@gmail.com', 'admin');
+CREATE TABLE `roles` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `company` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `name` varchar(300) DEFAULT NULL,
+  `website` varchar(8000) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `users` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `email` varchar(255) unique NULL,
+  `name` varchar (50) DEFAULT NULL,
+  `password` varchar(255) DEFAULT NULL,
+  `username` varchar (50) unique NULL,
+  `location` varchar (200) DEFAULT NULL,
+  `degree` varchar (200) DEFAULT NULL,
+  `phone_number` VARCHAR (100) DEFAULT NULL,
+  `date_of_birth` DATE DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  UNIQUE KEY `UKob8kqyqqgmefl0aco34akdtpe` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `user_roles` (
+  `user_id` bigint(20) NOT NULL,
+  `role_id` bigint(20) NOT NULL,
+  KEY `FKt4v0rrweyk393bdgt107vdx0x` (`role_id`),
+  KEY `FKgd3iendaoyh04b95ykqise6qh` (`user_id`),
+  CONSTRAINT `FKgd3iendaoyh04b95ykqise6qh` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `FKt4v0rrweyk393bdgt107vdx0x` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+
+CREATE TABLE `user_company` (
+  `user_id` bigint(20) NOT NULL,
+  `company_id` bigint(20) NOT NULL,
+  KEY `grBHZaVzKQ569qkyEp5g4MYMMpf` (`company_id`),
+  KEY `z72C5GgxvXs5ut4C5eS3j5Gbua7` (`user_id`),
+  CONSTRAINT `grBHZaVzKQ569qkyEp5g4MYMMpf` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `z72C5GgxvXs5ut4C5eS3j5Gbua7` FOREIGN KEY (`company_id`) REFERENCES `company` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `social_media` (
+  `id` bigint(20) NOT NULL,
+  `linkedin` varchar(8000) DEFAULT NULL,
+  `github` varchar(8000) DEFAULT NULL,
+  `twitter` varchar(8000) DEFAULT NULL,
+  `facebook` varchar(8000) DEFAULT NULL,
+  KEY `g34RGaVzKQ53RFDyEp5g4MYMMpf` (`id`),
+  CONSTRAINT `g34RGaVzKQ53RFDyEp5g4MYMMpf` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
+INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');

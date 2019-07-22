@@ -1,0 +1,57 @@
+.user_summary_wrapper {
+    position: relative;
+    padding-right: 30px!important; 
+    .user_summary_content {
+        background-color: #ffffff;
+        text-align: center;
+        padding-top: 15px;
+        .user_info {
+            border-bottom: 1px solid #dbdbdb;
+            margin-bottom: 10px;
+            .section_headers {
+                margin-right: 21px;
+                font-size: 19px;
+                font-weight: 700;
+                text-align: end;
+            }
+        }
+        .user_basic_info {
+            img {
+                width: 100%;
+                max-height: 300px;
+                margin-bottom: 16px;
+            }
+            .user_info_text {
+            margin-left: 10px;
+                li {
+                    list-style-type: none;
+                    text-align: left;
+                    .info_header {
+                        display: inline-block;
+                        font-size: 17px;
+                        font-weight: 500;
+                    }
+                    .info_content {
+                        display: inline-block;
+                    }
+                }
+            }
+        }
+
+        .user_social_media {
+            .social_contents {
+                width: 75%;
+                margin: auto;
+                .social_profile_link {
+                    display: inline-block;
+                    font-size: 35px;
+                    width: 25%;
+                    &:hover {
+                        color: #201aa3;
+                        cursor: pointer;
+                    }
+                }
+            }
+        }
+    }
+}
