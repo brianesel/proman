@@ -19,7 +19,7 @@ export default class AboutMe extends Component {
                         <div className="about_me_avatar">
                             <img alt="my avatar" src={avatar} className="about_me_img"/>
                         </div>
-                        <p className="headers about_me_headers"></p>
+                        <p className="headers about_me_headers">Nguyen Huu Hai Trung</p>
                         <p className="icon">______ <i class="fa fa-rainbow"/> ______</p>
                         <p className="about_self_title">Freelance web developer</p>
                     </div>

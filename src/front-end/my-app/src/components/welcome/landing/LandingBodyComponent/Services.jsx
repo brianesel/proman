@@ -46,6 +46,7 @@ export default class Services extends Component {
                 <div className="services_wrapper">
                     <div className="services_content">
                         <p className="header">Service</p>
+                        <div className="body_icon"><i className="fa fa-rainbow"/></div>
                         <div className="services_list row">
                             {this.services_items}
                         </div>

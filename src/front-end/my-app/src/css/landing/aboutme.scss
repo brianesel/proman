@@ -18,10 +18,16 @@
                 }
 
             }
+            .about_me_headers {
+                margin: 10px 0 0; 
+                color: $primaryWhite;
+                font-size: 63px;
+                font-weight: 500;
+            }
             .about_self_title {
                 color: $primaryWhite;
-                font-size: 28px;
-                font-weight: 500;
+                font-size: 26px;
+                font-weight: 300;
             }
             .icon {
                 font-size: 60px;

@@ -18,7 +18,7 @@ class LandingMenu extends Component {
                     component: {SignupPage}
                 },
                 {
-                    name: 'About me',
+                    name: 'About App',
                     path: '/landing/about',
                     component: {SignupPage}
                 },

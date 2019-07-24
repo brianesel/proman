@@ -37,6 +37,7 @@ export default class Contact extends Component {
                 <div className="contact_wrapper">
                     <div className="contact_content">
                         <p className="header">Contact</p>
+                        <div className="body_icon"><i className="fa fa-rainbow"/></div>
                         <div className="contact_list">
                             <div className="name info" >
                                 {/* <p className="title">Name:</p> */}
