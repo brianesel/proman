@@ -14,8 +14,7 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = { "com.baeldung.springmvcforms", "com.baeldung.spring.controller",
-        "com.baeldung.spring.validator", "com.baeldung.spring.mail", "com.baeldung.spring.service" })
+@ComponentScan
 public class PublicEmailConfig implements WebMvcConfigurer {
 
     @Override
@@ -36,8 +35,8 @@ public class PublicEmailConfig implements WebMvcConfigurer {
         mailSender.setHost("smtp.gmail.com");
         mailSender.setPort(587);
 
-        mailSender.setUsername("my.gmail@gmail.com");
-        mailSender.setPassword("password");
+        mailSender.setUsername("profilemanager.proman@gmail.com");
+        mailSender.setPassword("proman123");
 
         Properties props = mailSender.getJavaMailProperties();
         props.put("mail.transport.protocol", "smtp");

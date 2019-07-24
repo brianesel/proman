@@ -2,15 +2,18 @@ package com.proman.email.controller;
 
 import com.proman.email.services.EmailServiceImpl;
 import com.proman.email.model.PublicMail;
+import com.proman.email.model.MailToMe;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.mail.SimpleMailMessage;
-import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.Errors;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RestController;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
@@ -19,7 +22,7 @@ import java.util.Iterator;
 import java.util.Map;
 import java.util.Set;
 
-@Controller
+@RestController
 @RequestMapping("/mail")
 public class PublicMailController {
 
@@ -28,6 +31,9 @@ public class PublicMailController {
 
     @Value("${attachment.invoice}")
     private String attachmentPath;
+
+    @Value("${my.email}")
+    private String myEmail;
 
     @Autowired
     public SimpleMailMessage template;
@@ -61,6 +67,22 @@ public class PublicMailController {
         labels.put("sendAttachment", props);
     }
 
+    @PostMapping("/send")
+    public String createMail(@Valid @RequestBody PublicMail mailObject) {
+
+        emailService.sendSimpleMessage(mailObject.getTo(), mailObject.getSubject(), mailObject.getText());
+
+        return "message sent";
+    }
+
+    @PostMapping("/sendtoMe")
+    public String mailToMe(@Valid @RequestBody MailToMe mailObject) {
+
+        emailService.sendSimpleMessage(myEmail, mailObject.getSubject(), mailObject.getText());
+
+        return "message sent";
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     public String showEmailsPage() {
         return "emails";
@@ -79,16 +101,6 @@ public class PublicMailController {
 
         model.addAttribute("publicMail", new PublicMail());
         return "mail/send";
-    }
-
-    @RequestMapping(value = "/send", method = RequestMethod.POST)
-    public String createMail(Model model, @ModelAttribute("publicMail") @Valid PublicMail mailObject, Errors errors) {
-        if (errors.hasErrors()) {
-            return "mail/send";
-        }
-        emailService.sendSimpleMessage(mailObject.getTo(), mailObject.getSubject(), mailObject.getText());
-
-        return "redirect:/home";
     }
 
     @RequestMapping(value = "/sendTemplate", method = RequestMethod.POST)

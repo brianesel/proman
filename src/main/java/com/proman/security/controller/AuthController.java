@@ -3,7 +3,6 @@ package com.proman.security.controller;
 import java.net.URI;
 import java.util.Collections;
 
-import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import org.springframework.beans.factory.annotation.Autowired;

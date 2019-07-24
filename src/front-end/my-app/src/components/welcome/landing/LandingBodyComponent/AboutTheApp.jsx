@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import '../../../../css/landing/contact.scss';
 import request from '../../../../js/requests/landingpagerequest'
 
-export default class Contact extends Component {
+export default class AboutTheApp extends Component {
 
     constructor(props) {
         super(props)

@@ -11,8 +11,6 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proman.backendApp.model.Company;
 import com.proman.backendApp.model.SocialMedia;
 
-import org.hibernate.validator.constraints.Length;
-
 public class SignUpRequest {
 
 	@NotBlank

@@ -1,25 +1,13 @@
 package com.proman.email.model;
 
-import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
-import javax.validation.constraints.Size;
 
-public class PublicMail {
+public class MailToMe {
 
-    @Email
     @NotNull
-    @Size(min = 1, message = "Please, set an email address to send the message to it")
-    private String to;
     private String subject;
+    @NotNull
     private String text;
-
-    public String getTo() {
-        return to;
-    }
-
-    public void setTo(String to) {
-        this.to = to;
-    }
 
     public String getSubject() {
         return subject;

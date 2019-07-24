@@ -22,8 +22,8 @@ export default class LandingFooter extends Component {
                         <section className="social_media col-4">
                             <p className="header">Find me on</p>
                             <p className="text_content social_media_content">
-                                <a className="social_profile_link" href=""><i className="fab fa-facebook"/></a>
-                                <a className="social_profile_link" href=""><i className="fab fa-twitter"/></a>
+                                <a className="social_profile_link" href="https://www.linkedin.com/in/trung-nguyen-huu-hai-a0a111184/"><i className="fab fa-facebook"/></a>
+                                <a className="social_profile_link" href="https://www.linkedin.com/in/trung-nguyen-huu-hai-a0a111184/"><i className="fab fa-twitter"/></a>
                                 <a className="social_profile_link" href="https://www.linkedin.com/in/trung-nguyen-huu-hai-a0a111184/"><i className="fab fa-linkedin"/></a>
                                 <a className="social_profile_link" href="https://github.com/brianesel"><i className="fab fa-github"/></a>
                             </p>
