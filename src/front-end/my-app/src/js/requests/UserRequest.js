@@ -12,6 +12,12 @@ class UserRequest {
             }
         })
     }
+    pdfConvert(fileUp){
+        console.log(fileUp)
+        console.log(localStorage.getItem('userOathTokenType')+" "+ (CryptoJS.AES.decrypt((localStorage.getItem('accessTokenEncrypted')).toString(), 'somerandomsecretkey')).toString(CryptoJS.enc.Utf8))
+        return axios.post(`${API_URL}/pdf/converter/file`,
+            fileUp)
+    }
 }
 
 export default new UserRequest()
