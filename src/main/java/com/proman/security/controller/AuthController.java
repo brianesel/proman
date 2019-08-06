@@ -102,7 +102,7 @@ public class AuthController {
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
 				signUpRequest.getDateOfBirth(), signUpRequest.getLocation(), signUpRequest.getPassword(),
 				signUpRequest.getPhoneNumber(), signUpRequest.getDegree(), signUpRequest.getCompany(),
-				signUpRequest.getSocialMedia());
+				signUpRequest.getSocialMedia(), signUpRequest.getSkill());
 
 		user.setPassword(passwordEncoder.encode(user.getPassword()));
 

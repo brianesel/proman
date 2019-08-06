@@ -5,6 +5,7 @@ import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.proman.backendApp.model.Company;
 import com.proman.backendApp.model.SocialMedia;
+import com.proman.backendApp.model.Skills;
 
 import java.sql.Date;
 import java.util.HashSet;
@@ -20,6 +21,7 @@ import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
 import javax.persistence.OneToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -79,12 +81,16 @@ public class User {
 	@JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
 	private Set<Company> company = new HashSet<>();
 
+	@ManyToMany(fetch = FetchType.LAZY)
+	@JoinTable(name = "user_skills", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id"))
+	private Set<Skills> skills = new HashSet<>();
+
 	public User() {
 
 	}
 
 	public User(String name, String username, String email, Date dateOfBirth, String location, String password,
-			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia) {
+			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia, Set<Skills> skills) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -95,6 +101,7 @@ public class User {
 		this.degree = degree;
 		this.phoneNumber = phoneNumber;
 		this.SocialMedia = SocialMedia;
+		this.skills = skills;
 	}
 
 	public Long getId() {
@@ -191,5 +198,13 @@ public class User {
 
 	public void setSocialMedia(SocialMedia SocialMedia) {
 		this.SocialMedia = SocialMedia;
+	}
+
+	public Set<Skills> getSkill() {
+		return skills;
+	}
+
+	public void setSkillName(Set<Skills> skills) {
+		this.skills = skills;
 	}
 }

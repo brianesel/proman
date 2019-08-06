@@ -63,5 +63,30 @@ CREATE TABLE `social_media` (
   CONSTRAINT `g34RGaVzKQ53RFDyEp5g4MYMMpf` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
+CREATE TABLE `skills` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `skill_name` varchar(250) UNIQUE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+CREATE TABLE `skill_level` (
+  `skill_level` INT,
+  PRIMARY KEY (`skill_level`)
+) ENGINE = InnoDB;
+
+CREATE TABLE `user_skills` (
+  `user_id` bigint(20) NOT NULL,
+  `skill_id` bigint(20) NOT NULL,
+  `level` INT(2) DEFAULT 1,
+  KEY `MDWOUIaqj8JVu9oyxnetEe733rF` (`user_id`),
+  KEY `8IpvB3Lo1KkUCZ96dLTpJJdl6Eb` (`skill_id`),
+  KEY `5ykesldriySyHLohBQeCHtjfv0H` (`level`),
+  CONSTRAINT `MDWOUIaqj8JVu9oyxnetEe733rF` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `8IpvB3Lo1KkUCZ96dLTpJJdl6Eb` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`),
+  CONSTRAINT `5ykesldriySyHLohBQeCHtjfv0H` FOREIGN KEY (`level`) REFERENCES `skill_level` (`skill_level`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+INSERT INTO skill_level( `skill_level` ) VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10);
+INSERT INTO skills( `skill_name` ) VALUES("Ruby"),("JS"),("Node"),("Express"),("Ember"),("CSS"),("Java"),("NativeSc"),("Vue"),("React");
 INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
 INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');
