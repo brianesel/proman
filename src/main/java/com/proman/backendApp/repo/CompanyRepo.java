@@ -10,5 +10,6 @@ import com.proman.backendApp.model.Company;
 @Repository
 public interface CompanyRepo extends JpaRepository<Company, Long> {
 
-    Optional<Company> findByName(String roleName);
+    Optional<Company> findByName(String name);
+
 }

@@ -9,8 +9,8 @@ import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.SkillLevel;
 import com.proman.backendApp.model.SocialMedia;
-import com.proman.backendApp.model.Skills;
 
 public class SignUpRequest {
 
@@ -47,7 +47,7 @@ public class SignUpRequest {
 
 	private Set<Company> company;
 
-	private Set<Skills> skills;
+	private Set<SkillLevel> skills;
 
 	public Set<Company> getCompany() {
 		return company;
@@ -129,11 +129,11 @@ public class SignUpRequest {
 		this.SocialMedia = SocialMedia;
 	}
 
-	public Set<Skills> getSkill() {
+	public Set<SkillLevel> getSkills() {
 		return skills;
 	}
 
-	public void setSkillName(Set<Skills> skills) {
-		this.skills = skills;
+	public void setSkills(Set<SkillLevel> skillLevels) {
+		this.skills = skillLevels;
 	}
 }

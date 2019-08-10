@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.proman.backendApp.model.Skills;
+import com.proman.backendApp.model.SkillLevel;
 
 @Repository
-public interface SkillsRepo extends JpaRepository<Skills, Long> {
+public interface SkillLevelRepo extends JpaRepository<SkillLevel, Long> {
 
-    Optional<Skills> findBySkillName(String name);
+    Optional<SkillLevel> findBySkillLevel(int skill_level);
 
 }

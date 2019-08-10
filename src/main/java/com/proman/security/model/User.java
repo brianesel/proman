@@ -2,10 +2,15 @@
 package com.proman.security.model;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.SkillLevel;
 import com.proman.backendApp.model.SocialMedia;
 import com.proman.backendApp.model.Skills;
+
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
 import java.sql.Date;
 import java.util.HashSet;
@@ -20,8 +25,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.JoinTable;
 import javax.persistence.ManyToMany;
-import javax.persistence.OneToOne;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
@@ -29,6 +34,7 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.NaturalId;
 
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "id")
 @Entity
 @Table(name = "users")
 public class User {
@@ -77,20 +83,19 @@ public class User {
 	@JoinTable(name = "user_roles", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
 	private Set<Role> roles = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "company_id", referencedColumnName = "id"))
+	@ManyToMany(fetch = FetchType.LAZY, cascade = { CascadeType.ALL })
+	@JoinTable(name = "user_company", joinColumns = @JoinColumn(name = "user_id"), inverseJoinColumns = @JoinColumn(name = "company_id"))
 	private Set<Company> company = new HashSet<>();
 
-	@ManyToMany(fetch = FetchType.LAZY)
-	@JoinTable(name = "user_skills", joinColumns = @JoinColumn(name = "user_id", referencedColumnName = "id"), inverseJoinColumns = @JoinColumn(name = "skill_id", referencedColumnName = "id"))
-	private Set<Skills> skills = new HashSet<>();
+	@OneToMany(mappedBy = "user", fetch = FetchType.LAZY)
+	private Set<SkillLevel> skillLevel;
 
 	public User() {
 
 	}
 
 	public User(String name, String username, String email, Date dateOfBirth, String location, String password,
-			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia, Set<Skills> skills) {
+			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia, Set<SkillLevel> skills) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -101,7 +106,15 @@ public class User {
 		this.degree = degree;
 		this.phoneNumber = phoneNumber;
 		this.SocialMedia = SocialMedia;
-		this.skills = skills;
+		this.skillLevel = skills;
+	}
+
+	public Set<SkillLevel> getSkillLevel() {
+		return skillLevel;
+	}
+
+	public void setSkillLevel(Set<SkillLevel> skill_level) {
+		this.skillLevel = skill_level;
 	}
 
 	public Long getId() {
@@ -200,11 +213,28 @@ public class User {
 		this.SocialMedia = SocialMedia;
 	}
 
-	public Set<Skills> getSkill() {
-		return skills;
+	@Override
+	public int hashCode() {
+		final int prime = 31;
+		int result = 1;
+		result = prime * result + ((id == null) ? 0 : id.hashCode());
+		return result;
 	}
 
-	public void setSkillName(Set<Skills> skills) {
-		this.skills = skills;
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		User other = (User) obj;
+		if (id == null) {
+			if (other.id != null)
+				return false;
+		} else if (!id.equals(other.id))
+			return false;
+		return true;
 	}
 }
