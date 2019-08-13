@@ -1,6 +1,8 @@
 # ProMan project: Build with Spring Boot Java and React.js
 
 Usual update will be on develop branch
+You can find front end package here: 
+https://github.com/brianesel/proman_fe
 
 # Start back end Spring Boot application:
 On main directory of the project
