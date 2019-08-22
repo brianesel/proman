@@ -78,7 +78,12 @@ public class PublicMailController {
     @PostMapping("/sendtoMe")
     public String mailToMe(@Valid @RequestBody MailToMe mailObject) {
 
-        emailService.sendSimpleMessage(myEmail, mailObject.getSubject(), mailObject.getText());
+        try {
+            emailService.sendSimpleMessage(myEmail, mailObject.getSubject(), mailObject.getText());
+        } catch (Exception e) {
+            System.out.println(e);
+            return "message failed";
+        }
 
         return "message sent";
     }
