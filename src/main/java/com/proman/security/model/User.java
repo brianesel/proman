@@ -4,11 +4,10 @@ package com.proman.security.model;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIdentityInfo;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
+import com.proman.backendApp.model.CVStorage;
 import com.proman.backendApp.model.Company;
 import com.proman.backendApp.model.SkillLevel;
 import com.proman.backendApp.model.SocialMedia;
-import com.proman.backendApp.model.Skills;
 
 import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 
@@ -73,6 +72,10 @@ public class User {
 	@JoinColumn(name = "id", referencedColumnName = "id")
 	private SocialMedia SocialMedia;
 
+	@OneToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id", referencedColumnName = "id")
+	private CVStorage cvStorage;
+
 	@NotBlank
 	@JsonIgnore
 	@Size(max = 100)
@@ -95,7 +98,7 @@ public class User {
 	}
 
 	public User(String name, String username, String email, Date dateOfBirth, String location, String password,
-			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia, Set<SkillLevel> skills) {
+			String phoneNumber, String degree, Set<Company> company, SocialMedia SocialMedia, Set<SkillLevel> skills,CVStorage cvStorage ) {
 		this.name = name;
 		this.username = username;
 		this.email = email;
@@ -107,6 +110,7 @@ public class User {
 		this.phoneNumber = phoneNumber;
 		this.SocialMedia = SocialMedia;
 		this.skillLevel = skills;
+		this.cvStorage = cvStorage;
 	}
 
 	public Set<SkillLevel> getSkillLevel() {
@@ -211,6 +215,14 @@ public class User {
 
 	public void setSocialMedia(SocialMedia SocialMedia) {
 		this.SocialMedia = SocialMedia;
+	}
+
+	public void setCvStorage(CVStorage cvStorage) {
+		this.cvStorage = cvStorage;
+	}
+
+	public CVStorage getCvStorage() {
+		return cvStorage;
 	}
 
 	@Override
