@@ -5,11 +5,11 @@ import java.util.Optional;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
-import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.Skills;
 
 @Repository
-public interface CompanyRepo extends JpaRepository<Company, Long> {
+public interface SkillsRepo extends JpaRepository<Skills, Long> {
 
-    Optional<Company> findByName(String name);
+    Optional<Skills> findBySkillName(String name);
 
 }

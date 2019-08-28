@@ -1,5 +1,6 @@
 package com.payloads;
 
+import java.io.IOException;
 import java.sql.Date;
 import java.util.Set;
 
@@ -8,7 +9,10 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.web.multipart.MultipartFile;
+import com.proman.backendApp.model.CVStorage;
 import com.proman.backendApp.model.Company;
+import com.proman.backendApp.model.SkillLevel;
 import com.proman.backendApp.model.SocialMedia;
 
 public class SignUpRequest {
@@ -45,6 +49,16 @@ public class SignUpRequest {
 	private SocialMedia SocialMedia;
 
 	private Set<Company> company;
+
+	private Set<SkillLevel> skills;
+
+	private MultipartFile profilePicture;
+
+	private MultipartFile cvFile;
+
+	private MultipartFile motiLetter;
+
+	private CVStorage cvStorage;
 
 	public Set<Company> getCompany() {
 		return company;
@@ -124,5 +138,21 @@ public class SignUpRequest {
 
 	public void setSocialMedia(SocialMedia SocialMedia) {
 		this.SocialMedia = SocialMedia;
+	}
+
+	public Set<SkillLevel> getSkills() {
+		return skills;
+	}
+
+	public void setSkills(Set<SkillLevel> skillLevels) {
+		this.skills = skillLevels;
+	}
+
+	public void setCvStorage(CVStorage cvStorage) {
+		this.cvStorage = cvStorage;
+	}
+
+	public CVStorage getCvStorage() throws IOException {
+		return cvStorage;
 	}
 }

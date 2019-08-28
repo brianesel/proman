@@ -14,7 +14,7 @@ CREATE TABLE `roles` (
 
 CREATE TABLE `company` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
-  `name` varchar(300) DEFAULT NULL,
+  `name` varchar(300) UNIQUE DEFAULT NULL,
   `website` varchar(8000) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
@@ -63,5 +63,25 @@ CREATE TABLE `social_media` (
   CONSTRAINT `g34RGaVzKQ53RFDyEp5g4MYMMpf` FOREIGN KEY (`id`) REFERENCES `users` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
-INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
-INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');
+CREATE TABLE `skills` (
+  `id` bigint(20) NOT NULL AUTO_INCREMENT,
+  `skill_name` varchar(250) UNIQUE DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
+-- CREATE TABLE `skill_level` (
+--   `skill_level` INT,
+--   PRIMARY KEY (`skill_level`)
+-- ) ENGINE = InnoDB;
+
+CREATE TABLE `user_skills` (
+  `user_id` bigint(20) NOT NULL,
+  `skill_id` bigint(20) NOT NULL,
+  `skill_level` INT(2) DEFAULT 1 NOT NULL,
+  PRIMARY KEY (`skill_id`, `user_id`),
+  KEY `MDWOUIaqj8JVu9oyxnetEe733rF` (`user_id`),
+  KEY `8IpvB3Lo1KkUCZ96dLTpJJdl6Eb` (`skill_id`),
+  CONSTRAINT `MDWOUIaqj8JVu9oyxnetEe733rF` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`),
+  CONSTRAINT `8IpvB3Lo1KkUCZ96dLTpJJdl6Eb` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+
