@@ -85,7 +85,3 @@ CREATE TABLE `user_skills` (
   CONSTRAINT `8IpvB3Lo1KkUCZ96dLTpJJdl6Eb` FOREIGN KEY (`skill_id`) REFERENCES `skills` (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 
--- INSERT INTO skill_level( `skill_level` ) VALUES(1),(2),(3),(4),(5),(6),(7),(8),(9),(10);
-INSERT INTO skills( `skill_name` ) VALUES("Ruby"),("JS"),("Node"),("Express"),("Ember"),("CSS"),("Java"),("NativeSc"),("Vue"),("React");
-INSERT IGNORE INTO roles (id, name) VALUES ('1', 'ROLE_USER');
-INSERT IGNORE INTO roles (id, name) VALUES ('2', 'ROLE_ADMIN');

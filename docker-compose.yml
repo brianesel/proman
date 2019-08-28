@@ -52,8 +52,27 @@ services:
     volumes:
       - database-data:/var/lib/mysql
     networks:
-      - backend  
+      - backend
+      - migration  
   
+  migration:
+    build:
+      context: ./migration # Use an image built from the specified dockerfile in the `proman` directory.
+      dockerfile: Dockerfile
+    volumes:
+      - ./migration:/docker-entrypoint-migrations.d
+    depends_on:
+      - backend-server
+    links:
+      - database
+    environment:
+      MYSQL_HOST: database
+      MYSQL_PORT: 3306
+      MYSQL_DATABASE: promanDB
+      MYSQL_USER: proman
+      MYSQL_PASSWORD: proman
+    networks:
+      - migration  
 # Volumes
 volumes:
   database-data:
@@ -61,4 +80,5 @@ volumes:
 # # Networks to be created to facilitate communication between containers
 networks:
   backend:
+  migration:
 #   frontend:    

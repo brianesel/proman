@@ -49,8 +49,8 @@ public class UserController {
 
         CVStorage userCVFile = cvStorageRepo.getOne(userServices.getUserId());
         return ResponseEntity.ok()
-        .contentType(MediaType.parseMediaType("application/pdf"))
-        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "hello" + "\"")
+        .contentType(MediaType.parseMediaType("image/jpeg"))
+        .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + "photo" + "\"")
         .body(new ByteArrayResource(userCVFile.getProfilePicture()));
         
     }

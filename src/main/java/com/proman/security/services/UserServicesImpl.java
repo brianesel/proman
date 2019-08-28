@@ -4,7 +4,9 @@ import com.proman.security.repo.UserRepo;
 import com.proman.security.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.stereotype.Component;
 
+@Component
 public class UserServicesImpl implements UserServices {
     @Autowired
     UserRepo userRepo;
