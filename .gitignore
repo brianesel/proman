@@ -55,3 +55,6 @@ build/
 /src/front-end/my-appnpm-debug.log*
 /src/front-end/my-appyarn-debug.log*
 /src/front-end/my-appyarn-error.log*
+
+Dockerfile
+docker-compose.yml
