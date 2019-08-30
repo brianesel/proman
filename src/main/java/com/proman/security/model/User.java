@@ -16,6 +16,7 @@ import java.util.HashSet;
 import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
@@ -48,6 +49,7 @@ public class User {
 
 	@NotBlank
 	@Size(max = 15)
+	@Column(unique=true)
 	private String username;
 
 	@Size(max = 100)

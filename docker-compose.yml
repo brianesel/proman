@@ -47,8 +47,8 @@ services:
     environment:
       MYSQL_DATABASE: promanDB
       MYSQL_USER: proman  
-      MYSQL_PASSWORD: ******
-      MYSQL_ROOT_PASSWORD: *******
+      MYSQL_PASSWORD: proman
+      MYSQL_ROOT_PASSWORD: 1691998
     volumes:
       - database-data:/var/lib/mysql
     networks:
@@ -70,7 +70,7 @@ services:
       MYSQL_PORT: 3306
       MYSQL_DATABASE: promanDB
       MYSQL_USER: proman
-      MYSQL_PASSWORD: ******
+      MYSQL_PASSWORD: proman
     networks:
       - migration  
 # Volumes
