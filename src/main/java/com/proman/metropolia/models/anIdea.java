@@ -1,11 +1,19 @@
 package com.proman.metropolia.models;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
 import com.proman.metropolia.models.emailIdeaer;
 
+import org.hibernate.annotations.NaturalId;
+
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Set;
 
 import javax.persistence.CascadeType;
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,11 +26,19 @@ import javax.validation.constraints.NotNull;
 
 @Entity
 @Table(name = "idea")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "subject")
 public class anIdea {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
+
+    @NaturalId
+    @NotNull
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(unique=true)
+    private Long specialID;
 
     @NotNull
     private String subject;
@@ -33,7 +49,7 @@ public class anIdea {
     @NotNull
     @ManyToMany(cascade = CascadeType.ALL)
     @JoinTable(name = "email_idea", joinColumns = @JoinColumn(name = "idea_id"), inverseJoinColumns = @JoinColumn(name = "email_id"))
-    private List<emailIdeaer> email;
+    private Set<emailIdeaer> email = new HashSet<>();
 
     @NotNull
     private String nickname;
@@ -43,7 +59,7 @@ public class anIdea {
     }
 
     public anIdea(String nickname, emailIdeaer email,String subject, String description ){
-        List<emailIdeaer> emailList = new ArrayList<emailIdeaer>();
+        Set<emailIdeaer> emailList = new HashSet<emailIdeaer>();
         emailList.add(email);
         this.nickname = nickname;
         this.email = emailList;
@@ -59,11 +75,7 @@ public class anIdea {
         this.subject = subject;
     }
 
-    public List<emailIdeaer> Email() {
-        return email;
-    }
-
-    public void setEmail(List<emailIdeaer> email) {
+    public void setEmail(Set<emailIdeaer> email) {
         this.email = email;
     }
 
@@ -85,5 +97,23 @@ public class anIdea {
 
     public Long getId(){
         return id;
+    }
+
+    public Long getSpecialID(){
+        return specialID;
+    }
+
+    public void setSpecialID(Long specialID){
+        this.specialID = specialID;
+    }
+
+    public Set<emailIdeaer> getEmail(){
+        return email;
+    }
+
+    public void addEmail(Set<emailIdeaer> email){
+        for (emailIdeaer anEmail: email){
+            this.email.add(anEmail);
+        }
     }
 }

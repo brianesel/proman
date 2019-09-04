@@ -1,4 +1,4 @@
-package com.payloads;
+package com.payloads.request.metropolia;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;

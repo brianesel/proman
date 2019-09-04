@@ -13,13 +13,22 @@ import javax.persistence.Table;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 
+import com.fasterxml.jackson.annotation.JsonIdentityInfo;
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.ObjectIdGenerators;
+
+import org.hibernate.annotations.NaturalId;
+
 @Entity
 @Table(name="email")
+@JsonIdentityInfo(generator = ObjectIdGenerators.PropertyGenerator.class, property = "email")
 public class emailIdeaer {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @JsonIgnore
     private Long id;
 
+    @NaturalId
     @NotNull
     @Email
     @Column(unique=true)
@@ -41,7 +50,7 @@ public class emailIdeaer {
     }
 
     public String getEmail(){
-        return this.email;
+        return email;
     }
 
     public void setIdea(List<anIdea> idea){
@@ -54,5 +63,9 @@ public class emailIdeaer {
 
     public Long getId(){
         return id;
+    }
+
+    public void setId(Long id ){
+        this.id = id;
     }
 }

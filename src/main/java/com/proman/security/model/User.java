@@ -76,6 +76,7 @@ public class User {
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "id", referencedColumnName = "id")
+	@JsonIgnore
 	private CVStorage cvStorage;
 
 	@NotBlank

@@ -126,13 +126,19 @@ public class AuthController {
 		CVStorage userCVStorage = new CVStorage();
 		if(profileImage != null && (profileImage.getContentType() == "image/jpeg")){
 			userCVStorage.setProfilePicture(profileImage.getBytes());
+		} else if(profileImage == null){
+			System.out.println("profile Image null");
 		} else return new ResponseEntity(new ApiResponse(false, "Wrong MIME type. You should upload jpeg files"), HttpStatus.BAD_REQUEST);
 		if(cvFile !=null && cvFile.getContentType() == "application/pdf"){
 			userCVStorage.setCV(cvFile.getBytes());
-		} else return new ResponseEntity(new ApiResponse(false, "Wrong MIME type. You should upload pdf files"), HttpStatus.BAD_REQUEST);
+		} else if(cvFile == null){
+			System.out.println("cvFile null");
+		}else return new ResponseEntity(new ApiResponse(false, "Wrong MIME type. You should upload pdf files"), HttpStatus.BAD_REQUEST);
 		if(motiLetter !=null && motiLetter.getContentType() == "application/pdf"){
 			userCVStorage.setMotiLetter(motiLetter.getBytes());
-		} else return new ResponseEntity(new ApiResponse(false, "Wrong MIME type. You should upload pdf files"), HttpStatus.BAD_REQUEST);
+		} else if(motiLetter == null){
+			System.out.println("motivation letter null");
+		}else return new ResponseEntity(new ApiResponse(false, "Wrong MIME type. You should upload pdf files"), HttpStatus.BAD_REQUEST);
 		signUpRequest.setCvStorage(userCVStorage);
 		// Creating user's account
 		User user = new User(signUpRequest.getName(), signUpRequest.getUsername(), signUpRequest.getEmail(),
