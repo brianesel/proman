@@ -12,7 +12,7 @@ import com.proman.metropolia.models.emailIdeaer;
 import com.proman.metropolia.repo.emailRepo;
 import com.proman.metropolia.repo.ideaRepo;
 import com.proman.metropolia.service.IdeaServicesImpl;
-
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
+@CrossOrigin(origins = "brianeselthis.me")
 @RestController
 @RequestMapping("/metropolia")
 public class ideaController {
@@ -49,6 +50,7 @@ public class ideaController {
         return "sucess";
     }
 
+    @CrossOrigin(origins = "brianeselthis.me")
     @GetMapping("/idea/list")
     @ResponseBody
     public Object getIdeaList() throws Exception{
