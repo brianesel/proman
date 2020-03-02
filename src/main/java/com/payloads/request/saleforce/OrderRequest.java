@@ -1,7 +1,9 @@
 package com.payloads.request.saleforce;
 
+import javax.persistence.Entity;
 import javax.validation.constraints.NotBlank;
 
+@Entity
 public class OrderRequest {
 	@NotBlank
 	private String Account__c;
@@ -19,7 +21,7 @@ public class OrderRequest {
 
 	private int status__c;
 
-	public OrderRequest(String Account__c, String Billing_address__c,String Shipping_address__c,String Product__c,int Quantity__c,int status__c){
+	public void setUp(String Account__c, String Billing_address__c,String Shipping_address__c,String Product__c,int Quantity__c,int status__c){
 		this.status__c = status__c;
 		this.Quantity__c = Quantity__c;
 		this.Billing_address__c = Billing_address__c;

@@ -178,7 +178,7 @@ public class SaleforceService {
                 queryProducts();
                 break;
             case "createOrder":
-                // code block
+                createOrder();
                 break;
             default:
                 // code block

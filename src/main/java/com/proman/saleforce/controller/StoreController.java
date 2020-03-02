@@ -72,14 +72,16 @@ public class StoreController {
 	ProductService productService;
 
 	@PostMapping("/shoes/createOrder")
-	public ResponseEntity<?> createOrder(@Valid @RequestBody OrderRequest orderRequest) {
-		System.out.println(orderRequest.toString());
+	public ResponseEntity<?> createOrder(@Valid @RequestParam("Account__c") String account,@Valid @RequestParam("Product__c") String product,@Valid @RequestParam("Billing_address__c") String bill,@Valid @RequestParam("Shipping_address__c") String ship,@Valid @RequestParam("status__c") int status,@Valid @RequestParam("Quantity__c") int quantity) {
+		System.out.println(account);
+		OrderRequest orderRequest = new OrderRequest();
+		orderRequest.setUp(account, bill, ship, product, quantity, status);
 		return ResponseEntity.ok(orderService.createOrder(orderRequest));
 	}
 	@PostMapping("/shoes/updateOrder")
 	public ResponseEntity<?> updateOrder(@Valid @RequestParam("Account__c") String account,@Valid @RequestParam("Product__c") String product,@Valid @RequestParam("Billing_address__c") String bill,@Valid @RequestParam("Shipping_address__c") String ship,@Valid @RequestParam("status__c") int status,@Valid @RequestParam("Quantity__c") int quantity) {
-		OrderRequest orderRequest = new OrderRequest(account, bill, ship, product, quantity, status);
-		return ResponseEntity.ok(orderService.updateOrder(orderRequest));
+		
+		return null;
 	}
 
 	@GetMapping("/shoes/getAll")
